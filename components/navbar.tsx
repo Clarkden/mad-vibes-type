@@ -76,7 +76,7 @@ const Navbar = (props: any) => {
           ></img>
         </div> */}
         <div className="w-full mx-auto flex flex-row items-center justify-between md:hidden">
-          <div className="flex flex-row justify-center items-center">
+          <div className="flex flex-row justify-center items-center" onClick={() => router.push('/')}>
             <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
           </div>
           <div className="flex flex-row items-center">
@@ -118,11 +118,6 @@ const Navbar = (props: any) => {
           </p>
         </div>
       </nav>
-      <div className="fixed bottom-8 right-5 z-10 md:hidden">
-        <div className="w-16 h-16 bg-[#e8eddf] rounded-full flex flex-row items-center justify-center">
-          <ShoppingBag />
-        </div>
-      </div>
     </>
   );
 };
