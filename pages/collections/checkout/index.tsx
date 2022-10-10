@@ -111,7 +111,7 @@ const Checkout = (props: any) => {
                       <div className="w-24 h-24 overflow-hidden rounded-lg relative">
                         <img
                           src={data.item.images[0].src}
-                          className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto h-auto min-h-full"
+                          className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
                         ></img>
                       </div>
                       <div>
