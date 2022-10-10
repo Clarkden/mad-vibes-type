@@ -101,7 +101,7 @@ const Checkout = (props: any) => {
         </Head>
         <Navbar products={props.products} />
         <section className="w-full min-h-screen flex flex-col justify-center md:flex-row p-4 md:p-10 md:px-20 md:gap-10 mb-8">
-          <section className="w-full md:w-1/2 h-[0vh] md:h-[80vh] bg-[#e8eddf] rounded-md p-5 mx-auto flex flex-col justify-between items-center">
+          <section className="w-full md:w-1/2 h-[70vh] md:h-[80vh] bg-[#e8eddf] rounded-md p-5 mx-auto flex flex-col justify-between items-center">
             <div className="w-full h-auto overflow-scroll">
               <h1 className="mb-4 text-2xl">Shopping Cart</h1>
               {renderedItems?.map((data: any, i: number) => (

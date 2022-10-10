@@ -77,7 +77,7 @@ const Navbar = (props: any) => {
         </div> */}
         <div className="w-full mx-auto flex flex-row items-center justify-between md:hidden">
           <div className="flex flex-row justify-center items-center">
-            <img src="mad_vibes_logo.png" className="h-12 w-[auto]"></img>
+            <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
           </div>
           <div className="flex flex-row items-center">
             <ShoppingBag products={props.products} />
