@@ -39,7 +39,7 @@ const Home = (props: productProps) => {
       <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
     </Head>
     <Navbar products={props.products}/>
-    <div className='bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-center bg-repeat'>
+    <div className='bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-center bg-repeat bg-cover'>
       
 
       <section className="w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center">
