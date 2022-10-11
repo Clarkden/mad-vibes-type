@@ -26,21 +26,24 @@ const Home = (props: productProps) => {
 
   const router = useRouter();
 
-  
-
   return (
     <>
-    <Head>
-      <title>Mad Vibes</title>
-      <meta charSet="UTF-8"/>
-      <meta name="description" content="Find your next favorite item for your closet. Find wardrobe that will have you looking fresh."/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <meta name="keywords" content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"/>
-      <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
-    </Head>
-    <Navbar products={props.products}/>
-    {/* <div className=' bg-fixed bg-center bg-no-repeat md:bg-repeat bg-contain'> */}
-      
+      <Head>
+        <title>Mad Vibes</title>
+        <meta charSet="UTF-8" />
+        <meta
+          name="description"
+          content="Find your next favorite item for your closet. Find wardrobe that will have you looking fresh."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"
+        />
+        <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
+      </Head>
+      <Navbar products={props.products} />
+      {/* <div className=' bg-fixed bg-center bg-no-repeat md:bg-repeat bg-contain'> */}
 
       <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-top md:bg-center'>
         <div className="w-1/3 h-full hidden md:block"></div>
@@ -58,7 +61,18 @@ const Home = (props: productProps) => {
         id="main"
         className="w-full flex flex-col mx-auto  relative justify-between bg-neutral-900 "
       >
-        <section className="bg-transparent w-11/12 md:w-full mx-auto">
+        {/* <div clas></div> */}
+        <section className="h-screen flex flex-row relative overflow-hidden">
+          <div className="w-1/2">
+            <img src="/FullSizeRender.JPG"></img>
+          </div>
+          <div className="w-1/2 flex flex-col justify-center items-center">
+            <div className="w-[80%] h-[50%] border-dotted border-[10px] border-orange-400 flex flex-row items-center justify-center">
+              <h1 className="text-white text-xl md:text-3xl">ITS SPOOKY SEASON</h1>
+            </div>
+          </div>
+        </section>
+        {/* <section className="bg-transparent w-11/12 md:w-full mx-auto">
           <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
             <div className="text-white flex flex-row justify-between items-baseline">
               <h1 className=" font-semibold mb-5 text-2xl sm:text-3xl lg:text-4xl">
@@ -130,20 +144,38 @@ const Home = (props: productProps) => {
                 ))}
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="w-full flex flex-col items-center justify-center bg-neutral-800 h-fit py-8 pb-10 md:py-0 md:h-[35vh]">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl mb-4 font-thin">Join our mail list</h1>
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl mb-4 font-thin">
+            Join our mail list
+          </h1>
           <form className="w-full md:w-[auto]">
             <div className="flex flex-col md:flex-row items-center gap-4">
-              <input type="text" placeholder="Email" className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white" />
-              <input type="text" placeholder="First Name" className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white" />
-              <input type="text" placeholder="Last Name" className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white" />
-              <button className="bg-[#e8eddf] w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm">Sign Up</button>
+              <input
+                type="text"
+                placeholder="Email"
+                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
+              />
+              <input
+                type="text"
+                placeholder="First Name"
+                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
+              />
+              <button className="bg-[#e8eddf] w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm">
+                Sign Up
+              </button>
             </div>
           </form>
-          <p className="mt-4 text-gray-300 underline underline-offset-4">Get all of the latest drops and promotions</p>
+          <p className="mt-4 text-gray-300 underline underline-offset-4">
+            Get all of the latest drops and promotions
+          </p>
         </section>
-        <section className="bg-transparent w-11/12 md:w-full mx-auto">
+        {/* <section className="bg-transparent w-11/12 md:w-full mx-auto">
           <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
             <div className="flex flex-row justify-between items-baseline text-white">
               <h1 className="text-gray-50 font-semibold mb-5 text-2xl sm:text-3xl lg:text-4xl">
@@ -181,7 +213,7 @@ const Home = (props: productProps) => {
                 ))}
             </div>
           </div>
-        </section>
+        </section> */}
         {/* <section className="w-full h-[fit] py-5 bg-neutral-700">
           <div className="w-full flex flex-row justify-between items-center px-20">
             <h1 className="text-white text-5xl font-bold tracking-widest">
@@ -198,7 +230,7 @@ const Home = (props: productProps) => {
         </section> */}
         <section className="w-full h-[80vh]"></section>
       </main>
-    {/* </div> */}
+      {/* </div> */}
     </>
   );
 };
