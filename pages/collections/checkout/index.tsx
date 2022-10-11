@@ -28,6 +28,7 @@ const Checkout = (props: any) => {
   const [items, setItems] = useState<any>([]);
   const [renderedItems, setRenderedItems] = useState<any>();
   const [updateItems, SetUpdateItems] = useState<number>(0);
+  const [cartTotal, setCartTotal] = useState<number>(0);
 
   useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("items")!);
@@ -40,10 +41,26 @@ const Checkout = (props: any) => {
     let cartItems: any = [];
     for (let x = 0; x < items.length; x++) {
       const index = products.findIndex((item: any) => item.id === items[x].id);
-      cartItems.push({ item: products[index], quantity: items[x].quantity, variant: items[x].variant });
+      cartItems.push({
+        item: products[index],
+        quantity: items[x].quantity,
+        variant: items[x].variant,
+      });
     }
     setRenderedItems(cartItems);
   }, [items, products, updateItems]);
+
+  useEffect(() => {
+    let localCartTotal: number = 0;
+    for (let i = 0; i < renderedItems?.length; i++) {
+      const index = renderedItems[i].item.variants.findIndex(
+        (variant: any) => variant.title === renderedItems[i].variant
+      );
+
+      localCartTotal += parseInt(renderedItems[i].item.variants[index].price);
+    }
+    setCartTotal(localCartTotal);
+  }, [renderedItems]);
 
   const AddQuantity = (id: string) => {
     let localItems: any = JSON.parse(localStorage.getItem("items")!);
@@ -73,22 +90,36 @@ const Checkout = (props: any) => {
   };
 
   const Checkout = async () => {
-
     const localClient = Client.buildClient({
-      storefrontAccessToken: process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN!,
+      storefrontAccessToken:
+        process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN!,
       domain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!,
     });
 
-    let lineItems = []
-    for (let i = 0; i < renderedItems.length; i++){
-      if(renderedItems[i].item.variants.some((item: any) => item.title === renderedItems[i].variant))
-        lineItems.push({variantId: renderedItems[i].item.variants[renderedItems[i].item.variants.findIndex((item: any) => item.title === renderedItems[i].variant)].id, quantity: renderedItems[i].quantity})
+    let lineItems = [];
+    for (let i = 0; i < renderedItems.length; i++) {
+      if (
+        renderedItems[i].item.variants.some(
+          (item: any) => item.title === renderedItems[i].variant
+        )
+      )
+        lineItems.push({
+          variantId:
+            renderedItems[i].item.variants[
+              renderedItems[i].item.variants.findIndex(
+                (item: any) => item.title === renderedItems[i].variant
+              )
+            ].id,
+          quantity: renderedItems[i].quantity,
+        });
     }
 
-    let checkout = parseShopifyResponse(await localClient.checkout.create())
-    checkout = parseShopifyResponse(await localClient.checkout.addLineItems(checkout.id, lineItems))
-    router.push(checkout.webUrl)
-  }
+    let checkout = parseShopifyResponse(await localClient.checkout.create());
+    checkout = parseShopifyResponse(
+      await localClient.checkout.addLineItems(checkout.id, lineItems)
+    );
+    router.push(checkout.webUrl);
+  };
 
   if (props) {
     return (
@@ -116,7 +147,9 @@ const Checkout = (props: any) => {
                         ></img>
                       </div>
                       <div>
-                        <h1 className="text-base md:text-lg">{data.item.title}</h1>
+                        <h1 className="text-base md:text-lg">
+                          {data.item.title}
+                        </h1>
                         <div>
                           <div className="flex flex-row gap-3">
                             <p className="text-sm md:text-base w-fit">
@@ -150,26 +183,38 @@ const Checkout = (props: any) => {
                   </div>
                 </div>
               ))}
-              
+              <div className="w-full">
+                <p className="text-base md:text-lg pt-4">Shopping Total: ${cartTotal}</p>
+              </div>
             </div>
             {renderedItems < 1 ? (
-                <div className=" flex-col items-center justify-center text-center">
-                  <h1 className="text-2xl">
-                    Uh oh!<br></br>Looks like your cart is empty!
-                  </h1>
-                  <p className="text-red-500 cursor-pointer hover:text-red-300 underline underline-offset-2" onClick={() => router.push("/collections")}>
-                    Back to collections
-                  </p>
-                </div>
-              ) : null}
+              <div className=" flex-col items-center justify-center text-center">
+                <h1 className="text-2xl">
+                  Uh oh!<br></br>Looks like your cart is empty!
+                </h1>
+                <p
+                  className="text-red-500 cursor-pointer hover:text-red-300 underline underline-offset-2"
+                  onClick={() => router.push("/collections")}
+                >
+                  Back to collections
+                </p>
+              </div>
+            ) : null}
+
             <div className="w-full flex md:flex-row flex-col gap-2">
               <button
                 className="bg-red-400 text-white w-full p-2 rounded-lg"
-                onClick={() => {ClearCart(); window.location.reload()}}
+                onClick={() => {
+                  ClearCart();
+                  window.location.reload();
+                }}
               >
                 Clear Cart
               </button>
-              <button className="bg-green-400 w-full text-white p-2 rounded-lg" onClick={() => Checkout()}>
+              <button
+                className="bg-green-400 w-full text-white p-2 rounded-lg"
+                onClick={() => Checkout()}
+              >
                 Checkout
               </button>
             </div>
