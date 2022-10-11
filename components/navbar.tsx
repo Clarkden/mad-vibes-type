@@ -89,6 +89,7 @@ const Navbar = (props: any) => {
                   ? setMobileOpacity("opacity-100 pointer-events-auto")
                   : setMobileOpacity("opacity-0 pointer-events-none")
               }
+              size="lg"
             />
           </div>
         </div>

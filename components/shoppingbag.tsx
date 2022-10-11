@@ -91,7 +91,7 @@ const ShoppingBag = (props: any) => {
           </p>
         ) : null}
         <div
-          className={`absolute left-1/2 -translate-x-56 md:-translate-x-60 top-14 w-[260px] bg-[#e8eddf] max-h-[40vh] h-fit px-4 py-2 rounded-lg ${menu} transition duration-500`}
+          className={`absolute left-1/2 -translate-x-56 md:-translate-x-60 top-14 w-[260px] bg-[#e8eddf] max-h-[40vh] h-fit px-4 py-2 rounded-lg ${menu} transition duration-500 drop-shadow-lg`}
         >
           <div className="flex flex-row w-full justify-between items-center">
             <h1 className="font-semibold">Shopping Cart</h1>
