@@ -39,7 +39,7 @@ const Navbar = (props: any) => {
   return (
     <>
       <nav
-        className={`px-4 md:px-10 h-14 bg-[#e8eddf] ${navBarSticky} flex flex-row z-50 transition-all duration-500 relative justify-between`}
+        className={`px-4 md:px-10 h-16 bg-[#e8eddf] ${navBarSticky} flex flex-row z-50 transition-all duration-500 relative justify-between`}
       >
         <div
           className="w-fit hidden md:flex flex-row justify-center items-center cursor-pointer"
