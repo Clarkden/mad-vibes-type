@@ -63,7 +63,6 @@ const Collection = (props: any) => {
         if (!selectedVariant && localProduct.variants[x].available)
           setSelectedVariant(localProduct!.variants[x]);
       }
-      
     } else {
       setSelectedVariant(localProduct!.variants[0]);
     }
@@ -72,21 +71,19 @@ const Collection = (props: any) => {
   // console.log(selectedVariant)
 
   const InstantCheckout = async (id: string) => {
-
     const localClient = Client.buildClient({
-      storefrontAccessToken: process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN!,
+      storefrontAccessToken:
+        process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN!,
       domain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!,
     });
 
-      let checkout = parseShopifyResponse(
-        await localClient.checkout.create()
-      );
-      checkout = parseShopifyResponse(
-        await localClient.checkout.addLineItems(checkout.id, [
-          { variantId: id, quantity: 1 },
-        ])
-      );
-      router.push(checkout.webUrl);
+    let checkout = parseShopifyResponse(await localClient.checkout.create());
+    checkout = parseShopifyResponse(
+      await localClient.checkout.addLineItems(checkout.id, [
+        { variantId: id, quantity: 1 },
+      ])
+    );
+    router.push(checkout.webUrl);
   };
 
   if (product) {
@@ -109,22 +106,38 @@ const Collection = (props: any) => {
             </div>
             <div className="flex flex-col justify-start md:flex-row h-full md:justify-around gap-10">
               <div className="md:w-3/5">
-                <div className="h-[40vh] md:h-[60vh] min-w-[95%] rounded-lg overflow-hidden relative mt-5 md:mt-0">
+                <div className="h-[30vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img
                     src={product.images[0].src}
                     className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
                   ></img>
                 </div>
+                {products.images?.length > 2 ? (
+                  <div className="w-1/3 flex flex-col">
+                    <div className="w-full h-1/2">
+                      <img
+                        src={product.images[1].src}
+                        className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                      ></img>
+                    </div>
+                    <div className="w-full h-1/2">
+                      <img
+                        src={product.images[2].src}
+                        className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                      ></img>
+                    </div>
+                  </div>
+                ) : null}
               </div>
               <div className="text-white">
                 <h1 className="text-2xl md:text-3xl">{product.title}</h1>
-                <p className="text-gray-400 text-lg">{product.productType}</p>
-                <h2 className="text-base md:text-xl text-gray-50 mt-1">
+                {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
+                <h2 className="text-xl md:text-2xl text-gray-50 mt-1">
                   ${selectedVariant.price}
                 </h2>
                 <h1 className="text-2xl mt-10">Sizes</h1>
                 <div className="md:w-2/5 mb-5">
-                  <div className="flex flex-row flex-wrap md:flex-nowrap gap-5 mt-2">
+                  <div className="flex flex-row flex-nowrap gap-5 mt-2">
                     {product.variants.map((data: any, i: number) => (
                       <>
                         {data.available ? (
@@ -132,14 +145,14 @@ const Collection = (props: any) => {
                             {data.title === selectedVariant?.title! ? (
                               <button
                                 key={i}
-                                className="bg-green-100 p-1 text-black text-sm rounded-s min-w-[1/3] min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px]"
+                                className={`bg-green-100 p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                               >
                                 {data.title}
                               </button>
                             ) : (
                               <button
                                 key={i}
-                                className="bg-neutral-500 p-1 text-black text-sm rounded-sm hover:bg-gray-50 min-w-[1/3] min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
+                                className="bg-neutral-500 p-1 text-black text-sm rounded-md hover:bg-gray-50 w-full min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
                                 onClick={() => setSelectedVariant(data)}
                               >
                                 {data.title}
@@ -150,7 +163,7 @@ const Collection = (props: any) => {
                           <button
                             key={i}
                             disabled
-                            className="border-2 border-gray-500 p-1 text-white text-sm rounded-sm md:text-lg min-w-[1/3] min-h-[30px] md:min-w-[120px] md:min-h-[35px]"
+                            className="border-2 border-gray-500 p-1 text-white text-md rounded-md md:text-lg w-full min-h-[30px] md:min-w-[120px] md:min-h-[35px]"
                           >
                             {data.title}
                           </button>
@@ -162,9 +175,9 @@ const Collection = (props: any) => {
                 {selectedVariant.available ? (
                   <button
                     key={1}
-                    className="bg-[#e8eddf] w-full p-2 text-black rounded-md mb-2"
+                    className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
                     onClick={() => {
-                      console.log(selectedVariant.title)
+                      console.log(selectedVariant.title);
                       AddToCart(product.id, selectedVariant.title);
                       window.location.reload();
                     }}
@@ -174,7 +187,7 @@ const Collection = (props: any) => {
                 ) : (
                   <button
                     key={1}
-                    className="bg-[#e8eddf]/75 w-full p-2 text-black rounded-md mb-2"
+                    className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md mb-2 mt-2"
                     disabled
                   >
                     Add to Cart
@@ -183,7 +196,7 @@ const Collection = (props: any) => {
                 {selectedVariant.available ? (
                   <button
                     key={2}
-                    className="bg-[#e8eddf] w-full p-2 text-black rounded-md"
+                    className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md"
                     onClick={() => InstantCheckout(product.variants[0].id)}
                   >
                     Buy
@@ -191,7 +204,7 @@ const Collection = (props: any) => {
                 ) : (
                   <button
                     key={2}
-                    className="bg-[#e8eddf]/75 w-full p-2 text-black rounded-md"
+                    className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md"
                     disabled
                   >
                     Buy

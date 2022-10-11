@@ -107,7 +107,7 @@ const ShoppingBag = (props: any) => {
             <div key={i} className="my-4">
               <div className="flex flex-col w-full">
                 <div className="flex flex-row w-full gap-3 ">
-                  <div className="w-[3rem] h-[3rem] max-h-[3rem] max-w-[3rem] relative rounded-lg overflow-hidden">
+                  <div className="w-[4rem] h-[4rem] max-h-[4rem] max-w-[4rem] relative rounded-lg overflow-hidden">
                     <img
                       src={data.item.images[0].src}
                       className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
