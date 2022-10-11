@@ -108,18 +108,18 @@ const Checkout = (props: any) => {
                 <div key={i} className="my-4">
                   <div className="flex flex-col w-full">
                     <div className="flex flex-row w-full gap-4">
-                      <div className="w-24 h-24 overflow-hidden rounded-lg relative">
+                      <div className=" min-w-[6rem] min-h-[6rem] overflow-hidden rounded-lg relative">
                         <img
                           src={data.item.images[0].src}
                           className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
                           alt="Image text"
                         ></img>
                       </div>
-                      {/* <div>
+                      <div>
                         <h1 className="text-base md:text-lg">{data.item.title}</h1>
                         <div>
                           <div className="flex flex-row gap-3">
-                            <p className="text-base w-fit">
+                            <p className="text-sm md:text-base w-fit">
                               Quantity: {data.quantity}
                             </p>
                             <div className="flex flex-col w-fit">
@@ -139,13 +139,13 @@ const Checkout = (props: any) => {
                           </div>
 
                           <p
-                            className="text-red-500 text-sm cursor-pointer hover:text-red-300 transition mt-4"
+                            className="text-red-500 text-xs md:text-sm cursor-pointer hover:text-red-300 transition mt-4"
                             onClick={() => RemoveFromCart(data.item.id)}
                           >
                             Remove from Cart
                           </p>
                         </div>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>
