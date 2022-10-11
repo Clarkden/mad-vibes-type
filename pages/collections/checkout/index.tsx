@@ -57,10 +57,10 @@ const Checkout = (props: any) => {
         (variant: any) => variant.title === renderedItems[i].variant
       );
 
-      localCartTotal += parseInt(renderedItems[i].item.variants[index].price);
+      localCartTotal += parseInt(renderedItems[i].item.variants[index].price) * renderedItems[i].quantity;
     }
     setCartTotal(localCartTotal);
-  }, [renderedItems]);
+  }, [renderedItems, updateItems]);
 
   const AddQuantity = (id: string) => {
     let localItems: any = JSON.parse(localStorage.getItem("items")!);
