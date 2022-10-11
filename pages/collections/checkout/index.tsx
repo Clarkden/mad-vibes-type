@@ -118,10 +118,10 @@ const Checkout = (props: any) => {
                         <h1 className="text-base md:text-lg">{data.item.title}</h1>
                         <div>
                           <div className="flex flex-row gap-3">
-                            <p className="text-base">
+                            <p className="text-base w-fit">
                               Quantity: {data.quantity}
                             </p>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col w-fit">
                               <FontAwesomeIcon
                                 icon={faCaretUp}
                                 className="h-fit w-fit cursor-pointer hover:text-neutral-500"
