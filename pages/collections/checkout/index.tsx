@@ -139,7 +139,7 @@ const Checkout = (props: any) => {
                 <div key={i} className="my-4">
                   <div className="flex flex-col w-full">
                     <div className="flex flex-row w-full gap-4">
-                      <div className=" min-w-[6rem] min-h-[6rem] overflow-hidden rounded-lg relative">
+                      <div className=" min-w-[6rem] min-h-[6rem] max-w-[6rem] max-h-[6rem] overflow-hidden rounded-lg relative">
                         <img
                           src={data.item.images[0].src}
                           className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
