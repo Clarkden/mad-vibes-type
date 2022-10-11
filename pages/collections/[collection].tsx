@@ -13,6 +13,7 @@ import {
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/navbar";
+import Client from "shopify-buy";
 
 interface product {
   id: string;
@@ -71,11 +72,17 @@ const Collection = (props: any) => {
   // console.log(selectedVariant)
 
   const InstantCheckout = async (id: string) => {
+
+    const localClient = Client.buildClient({
+      storefrontAccessToken: process.env.NEXT_PUBLIC_SHOPIFY_STORE_FRONT_ACCESS_TOKEN!,
+      domain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!,
+    });
+
       let checkout = parseShopifyResponse(
-        await shopifyClient.checkout.create()
+        await localClient.checkout.create()
       );
       checkout = parseShopifyResponse(
-        await shopifyClient.checkout.addLineItems(checkout.id, [
+        await localClient.checkout.addLineItems(checkout.id, [
           { variantId: id, quantity: 1 },
         ])
       );
