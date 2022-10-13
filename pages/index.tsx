@@ -38,7 +38,7 @@ const Home = (props: productProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"
+          content="mad vibes, madvibes, mad vibes la, madvibes la, madvibesla, mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"
         />
         <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
         <link href="https://dl.dafont.com/dl/?f=chomsky" rel="stylesheet" />

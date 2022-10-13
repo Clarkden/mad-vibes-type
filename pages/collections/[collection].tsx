@@ -146,13 +146,14 @@ const Collection = (props: any) => {
                   </div>
                 ) : null}
               </div>
-              <div className="text-white flex flex-col  ">
+              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
                 <div className="flex flex-col">
                   <h1 className="text-2xl md:text-3xl">{product.title}</h1>
                   {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
                   <h2 className="text-xl md:text-2xl text-yellow-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
+                  <p>{selectedVariant.description}</p>
                 </div>
                 <div>
                   <h1 className="text-2xl mt-10">Sizes</h1>
@@ -165,7 +166,7 @@ const Collection = (props: any) => {
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
-                                  className={`bg-purple-500 shadow-sm shadow-purple-500 p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                  className={`bg-white shadow-sm shadow-white p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                                 >
                                   {data.title}
                                 </button>
