@@ -106,7 +106,7 @@ const Collection = (props: any) => {
                 Back
               </p>
             </div>
-            <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-5 md:gap-10">
+            <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-10">
               <div className="md:w-3/5 flex flex-col">
                 <div className="h-[30vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img
@@ -148,43 +148,43 @@ const Collection = (props: any) => {
               </div>
               <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
                 <div className="flex flex-col">
-                  <h1 className="text-2xl md:text-3xl">{product.title}</h1>
+                  <h1 className="text-xl md:text-3xl">{product.title}</h1>
                   {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
-                  <h2 className="text-xl md:text-2xl text-yellow-200 mt-1">
+                  <h2 className="text-lg md:text-2xl text-yellow-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
                   <p>{selectedVariant.description}</p>
                 </div>
                 <div>
-                  <h1 className="text-2xl mt-10">Sizes</h1>
+                  <h1 className="text-lg md:text-2xl mt-10">Sizes</h1>
                   <div className="md:w-2/5 mb-5">
-                    <div className="flex flex-row flex-nowrap gap-5 mt-2">
+                    <div className="flex flex-row flex-nowrap gap-5 mt-2 overflow-scroll md:overflow-visible">
                       {product.variants.map((data: any, i: number) => (
                         <>
                           {data.available ? (
-                            <>
+                            <div className="w-fit md:w-full h-12 md:h-auto">
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
-                                  className={`bg-white shadow-sm shadow-white p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                  className={`bg-white shadow-sm shadow-white h-10 min-w-[105px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                                 >
                                   {data.title}
                                 </button>
                               ) : (
                                 <button
                                   key={i}
-                                  className="bg-neutral-400 p-1 text-black text-sm rounded-md hover:bg-gray-50 w-full min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
+                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[105px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
                                   onClick={() => setSelectedVariant(data)}
                                 >
                                   {data.title}
                                 </button>
                               )}
-                            </>
+                            </div>
                           ) : (
                             <button
                               key={i}
                               disabled
-                              className="border-2 border-gray-500 p-1 text-white text-md rounded-md md:text-lg w-full min-h-[30px] md:min-w-[120px] md:min-h-[35px]"
+                              className="border-2 border-gray-500 p-1 text-white text-sm h-10 min-w-[105px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px]"
                             >
                               {data.title}
                             </button>
@@ -196,7 +196,7 @@ const Collection = (props: any) => {
                   {selectedVariant.available ? (
                     <button
                       key={1}
-                      className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
+                      className="bg-[#e8eddf] w-full h-10 md:h-12 md:p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
                       onClick={() => {
                         console.log(selectedVariant.title);
                         AddToCart(product.id, selectedVariant.title);
@@ -208,7 +208,7 @@ const Collection = (props: any) => {
                   ) : (
                     <button
                       key={1}
-                      className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md mb-2 mt-2"
+                      className="bg-[#e8eddf]/75 w-full h-10 md:h-12 p-2 text-black rounded-md mb-2 mt-2"
                       disabled
                     >
                       Add to Cart
@@ -217,7 +217,7 @@ const Collection = (props: any) => {
                   {selectedVariant.available ? (
                     <button
                       key={2}
-                      className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md"
+                      className="bg-[#e8eddf] w-full h-10 md:h-12 p-2 text-black rounded-md"
                       onClick={() => InstantCheckout(product.variants[0].id)}
                     >
                       Buy
@@ -225,7 +225,7 @@ const Collection = (props: any) => {
                   ) : (
                     <button
                       key={2}
-                      className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md"
+                      className="bg-[#e8eddf]/75 w-full h-10 md:h-12 p-2 text-black rounded-md"
                       disabled
                     >
                       Buy
