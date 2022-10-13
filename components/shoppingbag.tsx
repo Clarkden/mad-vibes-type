@@ -108,10 +108,15 @@ const ShoppingBag = (props: any) => {
               <div className="flex flex-col w-full">
                 <div className="flex flex-row w-full gap-3 ">
                   <div className="w-[4rem] h-[4rem] max-h-[4rem] max-w-[4rem] relative rounded-lg overflow-hidden">
-                    <img
+                    {/* <img
                       src={data.item.images[0].src}
-                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
-                    ></img>
+                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full"
+                    ></img> */}
+                    <img
+                          src={data.item.images[0].src}
+                          className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto w-auto min-h-full"
+                          alt="Image text"
+                        ></img>
                   </div>
                   <div className="flex flex-col">
                     <h1 className="text-sm">{data.item.title}</h1>
