@@ -41,11 +41,12 @@ const Home = (props: productProps) => {
           content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"
         />
         <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
+        <link href="https://dl.dafont.com/dl/?f=chomsky" rel="stylesheet" />
       </Head>
       <Navbar products={props.products} />
       {/* <div className=' bg-fixed bg-center bg-no-repeat md:bg-repeat bg-contain'> */}
 
-      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-top md:bg-center'>
+      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-top md:bg-center relative'>
         <div className="w-1/3 h-full hidden md:block"></div>
         <div className="md:w-1/3 h-full md:border-x-2 md:border-white/50 flex flex-col justify-center items-center">
           <div className="bg-[#e8eddf] w-4/5 p-3">
@@ -57,21 +58,67 @@ const Home = (props: productProps) => {
         </div>
         <div className="w-1/3 h-full hidden md:block"></div>
       </section>
+      <Parallax speed={100} className="z-50 absolute">
+        <img
+          src="flying-bats.png"
+          className="w-auto h-[40vh] md:h-[60vh] top-0 left-20"
+        />
+      </Parallax>
       <main
         id="main"
         className="w-full flex flex-col mx-auto  relative justify-between bg-neutral-900 "
       >
-        {/* <div clas></div> */}
-        <section className="h-screen flex flex-row relative overflow-hidden">
-          <div className="w-1/2">
-            <img src="/FullSizeRender.JPG"></img>
+        <section className="h-fit flex flex-col-reverse md:flex-row relative overflow-hidden py-10 md:py-20 px-4 md:px-10">
+          {/* <div className="w-full md:w-1/2 flex flex-row flex-wrap mt-8 md:mt-0"> */}
+          <div className="w-full md:w-1/4 p-4">
+            <img
+              src="/FullSizeRender.JPG"
+              className="rounded-sm shadow-md shadow-orange-400 border-2 border-orange-400 saturate-150"
+            ></img>
           </div>
-          <div className="w-1/2 flex flex-col justify-center items-center">
-            <div className="w-[80%] h-[50%] border-dotted border-[10px] border-orange-400 flex flex-row items-center justify-center">
-              <h1 className="text-white text-xl md:text-3xl">ITS SPOOKY SEASON</h1>
-            </div>
+
+          {/* </div> */}
+
+          <div className="w-full md:w-1/2 flex flex-col justify-center md:items-center relative my-24 md:my-0">
+            <h1 className="text-3xl md:text-5xl font-chomsky text-orange-400 font-semibold text-center">
+              ITS SPOOKY SEASON
+            </h1>
+            <p className=" text-2xl md:text-3xl text-white font-chomsky text-center">
+              Shop our scariest drop yet!
+            </p>
+            <button
+              className="bg-orange-400 shadow-md shadow-orange-400 p-2 mt-5 black font-bold hover:scale-105 transition rounded-lg w-fit self-center"
+              onClick={() => router.push("collections")}
+            >
+              Shop Collections
+            </button>
+            <img
+              src="pumpkin1.png"
+              className="absolute w-14 h-14  left-6 -bottom-3 md:w-20 md:h-20 md:bottom-4 md:left-20 z-30"
+            />
+            <img
+              src="pumpkin2.png"
+              className="absolute w-14 h-14 right-6 -bottom-3 md:w-20 md:h-20 md:bottom-4 md:right-20 z-30"
+            />
+            {/* <img src="candel.png" className="absolute w-14 h-14 right-0  md:w-auto md:h-20 md:bottom-4 md:left-1/2 md:-translate-x-[90%] "/> */}
+            {/* <img src="candel.png" className="absolute w-14 h-14 right-0  md:w-auto md:h-20 md:bottom-4 md:left-1/2 md:-translate-x-[10%] "/> */}
+          </div>
+          <div className="w-full md:w-1/4 p-4">
+            <img
+              src="/IMG_4599.JPG"
+              className="rounded-sm shadow-md shadow-orange-400 border-2 border-orange-400 saturate-150"
+            ></img>
           </div>
         </section>
+        {/* <section>
+          <div className="w-1/3">
+            <img
+              src="/new-shirt-front.png"
+              className="rounded-sm shadow-md border-2 border-black saturate-150"
+            ></img>
+          </div>
+        </section> */}
+
         {/* <section className="bg-transparent w-11/12 md:w-full mx-auto">
           <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
             <div className="text-white flex flex-row justify-between items-baseline">

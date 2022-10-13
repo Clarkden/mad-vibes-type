@@ -46,6 +46,7 @@ const Navbar = (props: any) => {
           onClick={() => router.push("/")}
         >
           <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
+          {/* <img src="/pumpkin1.png" className="h-12 w-[auto] ml-2"></img> */}
         </div>
         <div className="w-fit hidden md:flex flex-row justify-center items-center">
           <ul className="flex flex-row gap-4 items-center ">
@@ -78,6 +79,7 @@ const Navbar = (props: any) => {
         <div className="w-full mx-auto flex flex-row items-center justify-between md:hidden">
           <div className="flex flex-row justify-center items-center" onClick={() => router.push('/')}>
             <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
+            
           </div>
           <div className="flex flex-row items-center">
             <ShoppingBag products={props.products} />

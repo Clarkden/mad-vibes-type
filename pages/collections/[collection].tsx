@@ -47,6 +47,7 @@ const Collection = (props: any) => {
   const [product, setProduct] = useState<product>();
   const { products, handle } = props;
   const [selectedVariant, setSelectedVariant] = useState<any>();
+  const [presentedImage, setPresentedImage] = useState<any>();
 
   useEffect(() => {
     let localProduct: any = {};
@@ -60,15 +61,16 @@ const Collection = (props: any) => {
 
     if (localProduct.variants.length - 1 > 0) {
       for (let x = localProduct.variants.length - 1; x > -1; x--) {
-        if (!selectedVariant && localProduct.variants[x].available)
+        if (!selectedVariant && localProduct.variants[x].available) {
           setSelectedVariant(localProduct!.variants[x]);
+          setPresentedImage(localProduct.images[0].src);
+        }
       }
     } else {
       setSelectedVariant(localProduct!.variants[0]);
+      setPresentedImage(localProduct.images[0].src);
     }
   }, [products, handle]);
-
-  // console.log(selectedVariant)
 
   const InstantCheckout = async (id: string) => {
     const localClient = Client.buildClient({
@@ -91,7 +93,7 @@ const Collection = (props: any) => {
       <>
         <Navbar products={products} />
         <section className="w-full min-h-screen flex flex-col md:flex-row p-4 md:p-10">
-          <div className="w-full md:w-11/12 mx-auto ">
+          <div className="w-full md:w-11/12 mx-auto pb-20">
             <div className="text-white md:mb-4 w-fit cursor-pointer hover:translate-x-1 transition duration-400">
               <FontAwesomeIcon
                 icon={faArrowLeftLong}
@@ -104,112 +106,131 @@ const Collection = (props: any) => {
                 Back
               </p>
             </div>
-            <div className="flex flex-col justify-start md:flex-row h-full md:justify-around gap-10">
-              <div className="md:w-3/5">
+            <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-5 md:gap-10">
+              <div className="md:w-3/5 flex flex-col">
                 <div className="h-[30vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img
-                    src={product.images[0].src}
+                    src={presentedImage}
                     className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
                   ></img>
                 </div>
-                {products.images?.length > 2 ? (
-                  <div className="w-1/3 flex flex-col">
-                    <div className="w-full h-1/2">
-                      <img
-                        src={product.images[1].src}
-                        className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
-                      ></img>
-                    </div>
-                    <div className="w-full h-1/2">
-                      <img
-                        src={product.images[2].src}
-                        className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
-                      ></img>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-              <div className="text-white">
-                <h1 className="text-2xl md:text-3xl">{product.title}</h1>
-                {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
-                <h2 className="text-xl md:text-2xl text-gray-50 mt-1">
-                  ${selectedVariant.price}
-                </h2>
-                <h1 className="text-2xl mt-10">Sizes</h1>
-                <div className="md:w-2/5 mb-5">
-                  <div className="flex flex-row flex-nowrap gap-5 mt-2">
-                    {product.variants.map((data: any, i: number) => (
+                {product?.images?.length > 1 ? (
+                  <div className="w-full h-fit md:h-[20vh] flex flex-row flex-nowrap overflow-hidden mt-3 gap-3">
+                    {product.images.slice(0, 3).map((data: any, i: number) => (
                       <>
-                        {data.available ? (
-                          <>
-                            {data.title === selectedVariant?.title! ? (
-                              <button
-                                key={i}
-                                className={`bg-green-100 p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
-                              >
-                                {data.title}
-                              </button>
-                            ) : (
-                              <button
-                                key={i}
-                                className="bg-neutral-500 p-1 text-black text-sm rounded-md hover:bg-gray-50 w-full min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
-                                onClick={() => setSelectedVariant(data)}
-                              >
-                                {data.title}
-                              </button>
-                            )}
-                          </>
-                        ) : (
-                          <button
+                        {presentedImage === data.src ? (
+                          <div
                             key={i}
-                            disabled
-                            className="border-2 border-gray-500 p-1 text-white text-md rounded-md md:text-lg w-full min-h-[30px] md:min-w-[120px] md:min-h-[35px]"
+                            className="w-1/4 h-[12vh] md:h-[20vh] overflow-hidden relative rounded-md cursor-pointer"
+                            onClick={() => setPresentedImage(data.src)}
                           >
-                            {data.title}
-                          </button>
+                            <img
+                              src={data.src}
+                              className="min-h-full w-auto md:h-auto md:min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                            ></img>
+                          </div>
+                        ) : (
+                          <div
+                            key={i}
+                            className="w-1/4 h-[12vh] md:h-[20vh] overflow-hidden relative rounded-md opacity-50 cursor-pointer"
+                            onClick={() => setPresentedImage(data.src)} 
+                          >
+                            <img
+                              src={data.src}
+                              className="min-h-full w-auto md:h-auto md:min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                            ></img>
+                          </div>
                         )}
                       </>
                     ))}
                   </div>
+                ) : null}
+              </div>
+              <div className="text-white flex flex-col  ">
+                <div className="flex flex-col">
+                  <h1 className="text-2xl md:text-3xl">{product.title}</h1>
+                  {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
+                  <h2 className="text-xl md:text-2xl text-yellow-200 mt-1">
+                    ${selectedVariant.price}
+                  </h2>
                 </div>
-                {selectedVariant.available ? (
-                  <button
-                    key={1}
-                    className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
-                    onClick={() => {
-                      console.log(selectedVariant.title);
-                      AddToCart(product.id, selectedVariant.title);
-                      window.location.reload();
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                ) : (
-                  <button
-                    key={1}
-                    className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md mb-2 mt-2"
-                    disabled
-                  >
-                    Add to Cart
-                  </button>
-                )}
-                {selectedVariant.available ? (
-                  <button
-                    key={2}
-                    className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md"
-                    onClick={() => InstantCheckout(product.variants[0].id)}
-                  >
-                    Buy
-                  </button>
-                ) : (
-                  <button
-                    key={2}
-                    className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md"
-                    disabled
-                  >
-                    Buy
-                  </button>
-                )}
+                <div>
+                  <h1 className="text-2xl mt-10">Sizes</h1>
+                  <div className="md:w-2/5 mb-5">
+                    <div className="flex flex-row flex-nowrap gap-5 mt-2">
+                      {product.variants.map((data: any, i: number) => (
+                        <>
+                          {data.available ? (
+                            <>
+                              {data.title === selectedVariant?.title! ? (
+                                <button
+                                  key={i}
+                                  className={`bg-purple-500 shadow-sm shadow-purple-500 p-1 text-black text-sm rounded-md w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                >
+                                  {data.title}
+                                </button>
+                              ) : (
+                                <button
+                                  key={i}
+                                  className="bg-neutral-400 p-1 text-black text-sm rounded-md hover:bg-gray-50 w-full min-h-[30px] md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
+                                  onClick={() => setSelectedVariant(data)}
+                                >
+                                  {data.title}
+                                </button>
+                              )}
+                            </>
+                          ) : (
+                            <button
+                              key={i}
+                              disabled
+                              className="border-2 border-gray-500 p-1 text-white text-md rounded-md md:text-lg w-full min-h-[30px] md:min-w-[120px] md:min-h-[35px]"
+                            >
+                              {data.title}
+                            </button>
+                          )}
+                        </>
+                      ))}
+                    </div>
+                  </div>
+                  {selectedVariant.available ? (
+                    <button
+                      key={1}
+                      className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
+                      onClick={() => {
+                        console.log(selectedVariant.title);
+                        AddToCart(product.id, selectedVariant.title);
+                        window.location.reload();
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <button
+                      key={1}
+                      className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md mb-2 mt-2"
+                      disabled
+                    >
+                      Add to Cart
+                    </button>
+                  )}
+                  {selectedVariant.available ? (
+                    <button
+                      key={2}
+                      className="bg-[#e8eddf] w-full h-12 p-2 text-black rounded-md"
+                      onClick={() => InstantCheckout(product.variants[0].id)}
+                    >
+                      Buy
+                    </button>
+                  ) : (
+                    <button
+                      key={2}
+                      className="bg-[#e8eddf]/75 w-full h-12 p-2 text-black rounded-md"
+                      disabled
+                    >
+                      Buy
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -173,7 +173,7 @@ const Collection = (props: productProps) => {
     </Head>
     <Navbar products={props.products}/>
       <div className="min-h-max">
-        <section className="md:p-14 flex flex-col md:flex-row relative w-full md:w-[95%] mx-auto md:gap-10 p-5">
+        <section className="md:p-14 flex flex-col md:flex-row relative w-full md:w-[95%] mx-auto md:gap-10 p-5 pb-20">
           <aside className="md:w-[20vw] h-[80vh] sticky top-14 hidden md:flex flex-col rounded-lg text-white">
             <div className="flex flex-col gap-3 border-b-2 pb-4 border-b-neutral-700 ">
               <div className="flex flex-row gap-2">

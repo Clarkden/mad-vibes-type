@@ -8,7 +8,10 @@ module.exports = {
     extend: {
       transitionProperty: {
         'height': 'height'
-      }
+      },
+      fontFamily: {
+        'chomsky': ['Chomsky'] 
+      },
     },
   },
   plugins: [

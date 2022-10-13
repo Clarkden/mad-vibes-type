@@ -8,12 +8,13 @@ config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <ParallaxProvider>
       <div className="min-w-full min-h-full bg-neutral-900 dark:text-black">
         <Component {...pageProps} />
         <Footer />
       </div>
+    </ParallaxProvider>
   );
 }
-
 
 export default MyApp;
