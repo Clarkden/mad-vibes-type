@@ -110,7 +110,7 @@ const ShoppingBag = (props: any) => {
                   <div className="w-[4rem] h-[4rem] max-h-[4rem] max-w-[4rem] relative rounded-lg overflow-hidden">
                     <img
                       src={data.item.images[0].src}
-                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full rounded-lg"
+                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-w-full rounded-lg"
                     ></img>
                   </div>
                   <div className="flex flex-col">
