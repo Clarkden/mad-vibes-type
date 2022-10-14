@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -62,7 +62,10 @@ const Navbar = (props: any) => {
             >
               Collections
             </li>
-            <li onClick={() => router.push('contact')} className="hover:cursor-pointer hover:text-rose-500 transition">
+            <li
+              onClick={() => router.push("contact")}
+              className="hover:cursor-pointer hover:text-rose-500 transition"
+            >
               Contact
             </li>
             <div className="h-8 border-r-2 border-neutral-700"></div>
@@ -77,22 +80,39 @@ const Navbar = (props: any) => {
           ></img>
         </div> */}
         <div className="w-full mx-auto flex flex-row items-center justify-between md:hidden">
-          <div className="flex flex-row justify-center items-center" onClick={() => router.push('/')}>
+          <div
+            className="flex flex-row justify-center items-center"
+            onClick={() => router.push("/")}
+          >
             <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
-            
           </div>
           <div className="flex flex-row items-center">
             <ShoppingBag products={props.products} />
-            <FontAwesomeIcon
-              icon={faBars}
-              className="cursor-pointer active:text-white transition duration-400"
-              onClick={() =>
-                mobileOpacity === "opacity-0 pointer-events-none"
-                  ? setMobileOpacity("opacity-100 pointer-events-auto")
-                  : setMobileOpacity("opacity-0 pointer-events-none")
-              }
-              size="lg"
-            />
+            <div className="w-4">
+              {mobileOpacity === "opacity-0 pointer-events-none" ? (
+                <FontAwesomeIcon
+                  icon={faBars}
+                  className="cursor-pointer active:text-white transition duration-400"
+                  onClick={() =>
+                    mobileOpacity === "opacity-0 pointer-events-none"
+                      ? setMobileOpacity("opacity-100 pointer-events-auto")
+                      : setMobileOpacity("opacity-0 pointer-events-none")
+                  }
+                  size="lg"
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faClose}
+                  className="cursor-pointer active:text-white transition duration-400"
+                  onClick={() =>
+                    mobileOpacity === "opacity-0 pointer-events-none"
+                      ? setMobileOpacity("opacity-100 pointer-events-auto")
+                      : setMobileOpacity("opacity-0 pointer-events-none")
+                  }
+                  size="lg"
+                />
+              )}
+            </div>
           </div>
         </div>
         <div
@@ -116,7 +136,10 @@ const Navbar = (props: any) => {
           >
             Collections
           </p>
-          <p onClick={() => router.push('/contact')} className="hover:cursor-pointer hover:scale-105 transition text-rose-500">
+          <p
+            onClick={() => router.push("/contact")}
+            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+          >
             Contact
           </p>
         </div>
