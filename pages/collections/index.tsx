@@ -175,7 +175,7 @@ const Collection = (props: productProps) => {
       <div className="min-h-max">
         <section className="md:p-14 flex flex-col md:flex-row relative w-full md:w-[95%] mx-auto md:gap-10 p-5 pb-20">
           <aside className="md:w-[20vw] h-[80vh] sticky top-14 hidden md:flex flex-col rounded-lg text-white">
-            <div className="flex flex-col gap-3 border-b-2 pb-4 border-b-neutral-700 ">
+            {/* <div className="flex flex-col gap-3 border-b-2 pb-4 border-b-neutral-700 ">
               <div className="flex flex-row gap-2">
                 {men ? (
                   <div
@@ -204,7 +204,7 @@ const Collection = (props: productProps) => {
                 ></div>
                 <p className="">Unisex</p>
               </div>
-            </div>
+            </div> */}
             <div className="flex flex-col gap-3 border-b-2 border-b-neutral-700 py-4">
               <div className="flex flex-row gap-2">
                 {sortByPriceLow ? (
@@ -318,7 +318,7 @@ const Collection = (props: productProps) => {
                   mobileCaret === "rotate-0"
                     ? () => {
                         setMobileCaret("rotate-90");
-                        setMobileSortingMenu("h-[240px]");
+                        setMobileSortingMenu("h-[220px]");
                       }
                     : () => {
                         setMobileCaret("rotate-0");
@@ -336,7 +336,7 @@ const Collection = (props: productProps) => {
                   mobileCaret === "rotate-0"
                     ? () => {
                         setMobileCaret("rotate-90");
-                        setMobileSortingMenu("h-[240px] ");
+                        setMobileSortingMenu("h-[200px] ");
                       }
                     : () => {
                         setMobileCaret("rotate-0");
@@ -348,7 +348,7 @@ const Collection = (props: productProps) => {
             <div
               className={`${mobileSortingMenu} w-full mt-5 overflow-scroll tranisition-height duration-500`}
             >
-              <div className="flex flex-row gap-3 border-b-2 pb-4 border-b-neutral-700 ">
+              {/* <div className="flex flex-row gap-3 border-b-2 pb-4 border-b-neutral-700 ">
                 <div className="flex flex-row gap-2">
                   {men ? (
                     <div
@@ -377,8 +377,8 @@ const Collection = (props: productProps) => {
                   ></div>
                   <p className="">Unisex</p>
                 </div>
-              </div>
-              <div className="flex flex-col gap-3 border-b-2 border-b-neutral-700 py-4">
+              </div> */}
+              <div className="flex flex-col gap-3 border-b-2 border-b-neutral-700 pb-4">
                 <div className="flex flex-row gap-2">
                   {sortByPriceLow ? (
                     <div

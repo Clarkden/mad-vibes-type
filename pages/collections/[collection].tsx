@@ -107,7 +107,7 @@ const Collection = (props: any) => {
               </p>
             </div>
             <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-10">
-              <div className="md:w-3/5 flex flex-col">
+              <div className="md:w-1/2 md:min-w-[50%] flex flex-col">
                 <div className="h-[30vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img
                     src={presentedImage}
@@ -148,15 +148,15 @@ const Collection = (props: any) => {
               </div>
               <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
                 <div className="flex flex-col">
-                  <h1 className="text-xl md:text-3xl">{product.title}</h1>
+                  <h1 className="text-lg md:text-2xl">{product.title}</h1>
                   {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
-                  <h2 className="text-lg md:text-2xl text-yellow-200 mt-1">
+                  <h2 className="text-base md:text-xl text-yellow-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
                   <p>{selectedVariant.description}</p>
                 </div>
                 <div>
-                  <h1 className="text-lg md:text-2xl mt-10">Sizes</h1>
+                  <h1 className="text-base md:text-xl mt-10">Sizes</h1>
                   <div className="md:w-2/5 mb-5">
                     <div className="flex flex-row flex-nowrap gap-5 mt-2 overflow-scroll md:overflow-visible">
                       {product.variants.map((data: any, i: number) => (

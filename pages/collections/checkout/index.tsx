@@ -172,7 +172,7 @@ const Checkout = (props: any) => {
                           </div>
 
                           <p
-                            className="text-red-500 text-xs md:text-sm cursor-pointer hover:text-red-300 transition mt-4"
+                            className="text-rose-500 text-xs md:text-sm cursor-pointer hover:text-rose-300 transition mt-4"
                             onClick={() => RemoveFromCart(data.item.id)}
                           >
                             Remove from Cart
@@ -189,11 +189,11 @@ const Checkout = (props: any) => {
             </div>
             {renderedItems < 1 ? (
               <div className=" flex-col items-center justify-center text-center">
-                <h1 className="text-2xl">
+                <h1 className="text-lg md:text-2xl">
                   Uh oh!<br></br>Looks like your cart is empty!
                 </h1>
                 <p
-                  className="text-red-500 cursor-pointer hover:text-red-300 underline underline-offset-2"
+                  className="text-rose-500 cursor-pointer hover:text-rose-300 underline underline-offset-2"
                   onClick={() => router.push("/collections")}
                 >
                   Back to collections
@@ -203,7 +203,7 @@ const Checkout = (props: any) => {
 
             <div className="w-full flex md:flex-row flex-col gap-2">
               <button
-                className="bg-red-400 text-white w-full p-2 rounded-lg"
+                className="bg-rose-500 hover:drop-shadow-md transition text-white w-full p-2 rounded-lg"
                 onClick={() => {
                   ClearCart();
                   window.location.reload();
@@ -212,7 +212,7 @@ const Checkout = (props: any) => {
                 Clear Cart
               </button>
               <button
-                className="bg-green-400 w-full text-white p-2 rounded-lg"
+                className="bg-emerald-500 hover:drop-shadow-md transition w-full text-white p-2 rounded-lg"
                 onClick={() => Checkout()}
               >
                 Checkout

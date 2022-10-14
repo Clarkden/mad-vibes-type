@@ -22,22 +22,6 @@ const ShoppingBag = (props: any) => {
   const [updateItems, setUpdateItems] = useState<number>(0);
 
   useEffect(() => {
-    const handleEvent = () => {
-      // const localItems = JSON.parse(localStorage.getItem("items")!);
-      // if (localItems) {
-      //   setItems(localItems);
-      // }
-      alert("Local Storage Update");
-    };
-
-    window.addEventListener("storage", handleEvent);
-
-    return () => {
-      window.removeEventListener("storage", handleEvent);
-    };
-  }, []);
-
-  useEffect(() => {
     const localItems = JSON.parse(localStorage.getItem("items")!);
     if (localItems) {
       setItems(localItems);
@@ -110,7 +94,7 @@ const ShoppingBag = (props: any) => {
                   <div className="w-[4rem] h-[4rem] max-h-[4rem] max-w-[4rem] relative rounded-lg overflow-hidden">
                     <img
                       src={data.item.images[0].src}
-                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-w-full rounded-lg"
+                      className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-lg"
                     ></img>
                   </div>
                   <div className="flex flex-col">
@@ -125,7 +109,7 @@ const ShoppingBag = (props: any) => {
           ))}
           {items?.length > 0 ? (
             <button
-              className="w-full bg-neutral-800 text-white rounded-lg p-1"
+              className="w-full border-rose-500 border-2  bg-rose-500 text-white rounded-lg p-1 transition"
               onClick={() => router.push("/collections/checkout")}
             >
               Visit Checkout

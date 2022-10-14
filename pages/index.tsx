@@ -79,15 +79,15 @@ const Home = (props: productProps) => {
 
           {/* </div> */}
 
-          <div className="w-full md:w-1/2 flex flex-col justify-center md:items-center relative my-24 md:my-0">
-            <h1 className="text-3xl md:text-5xl font-chomsky text-orange-400 font-semibold text-center">
+          <div className="w-full md:w-11/12 flex flex-col justify-center md:items-center relative my-24 md:my-0">
+            <h1 className="text-4xl md:text-6xl font-chomsky text-orange-400 font-semibold text-center">
               ITS SPOOKY SEASON
             </h1>
-            <p className=" text-2xl md:text-3xl text-white font-chomsky text-center">
+            <p className=" text-2xl md:text-3xl text-white font-chomsky text-center mt-5">
               Shop our scariest drop yet!
             </p>
             <button
-              className="bg-orange-400 shadow-md shadow-orange-400 p-2 mt-5 black font-bold hover:scale-105 transition rounded-lg w-fit self-center"
+              className="bg-orange-400 shadow-md shadow-orange-400 p-2 mt-3 black font-bold hover:scale-105 transition rounded-lg w-fit self-center"
               onClick={() => router.push("collections")}
             >
               Shop Collections
@@ -110,174 +110,57 @@ const Home = (props: productProps) => {
             ></img>
           </div>
         </section>
-        {/* <section>
-          <div className="w-1/3">
+        <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
+        <section className="h-fit md:h-[80vh] md:w-[95%] mx-auto py-20 md:px-5 flex flex-col md:flex-row gap-8">
+          <div className="w-11/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
             <img
-              src="/new-shirt-front.png"
-              className="rounded-sm shadow-md border-2 border-black saturate-150"
+              src="IMG_8029.jpg"
+              className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
             ></img>
           </div>
-        </section> */}
-
-        {/* <section className="bg-transparent w-11/12 md:w-full mx-auto">
-          <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
-            <div className="text-white flex flex-row justify-between items-baseline">
-              <h1 className=" font-semibold mb-5 text-2xl sm:text-3xl lg:text-4xl">
-                New In
-              </h1>
-              <h3 className="hover:-translate-x-3 cursor-pointer transition duration-300">
-                Shop All New
-                <FontAwesomeIcon icon={faArrowRightLong} className="ml-2 " />
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {products.slice(0, 4).map((data: any, i: number) => (
-                <div key={i}>
-                  <a href={`/collections/${data.handle}`} className="group">
-                    <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                      <img
-                        src={data.images[0].src}
-                        alt=""
-                        className="w-full h-full object-center object-cover group-hover:opacity-75"
-                      ></img>
-                    </div>
-                    
-                    <h3 className="mt-4 text-sm text-gray-100">{data.title}</h3>
-                    <p className="mt-1 text-lg font-medium text-gray-300">
-                      ${data.variants[0].price}
-                    </p>
-                  </a>
-                </div>
-              ))}
-            </div>
+          <div className="w-11/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+            <img
+              src="IMG_4595.jpg"
+              className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
+            ></img>
           </div>
+          <div className="w-11/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+            <img
+              src="IMG_8088.jpg"
+              className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
+            ></img>
+          </div>
+          <div className="w-11/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+            <img
+              src="IMG_7920.jpg"
+              className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
+            ></img>
+          </div>
+          
         </section>
-        <section className="bg-transparent w-11/12 md:w-full mx-auto h-fit">
-          <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
-            <div className="flex flex-row justify-between items-baseline text-white">
-              <h1 className="text-gray-50 font-semibold mb-5 text-2xl sm:text-3xl lg:text-4xl">
-                Shirts
-              </h1>
-              <h3 className="hover:-translate-x-3 cursor-pointer transition duration-300">
-                Shop All Shirts
-                <FontAwesomeIcon icon={faArrowRightLong} className="ml-2 " />
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {products
-                .filter((product: { productType: string | string[] }) =>
-                  product.productType.includes("Shirt")
-                )
-                .slice(0, 4)
-                .map((data: any, i: number) => (
-                  <div key={i}>
-                    <a href="#" className="group">
-                      <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                        <img
-                          src={data.images[0].src}
-                          alt=""
-                          className="w-full h-full object-center object-cover group-hover:opacity-75"
-                        ></img>
-                      </div>
-                      <h3 className="mt-4 text-sm text-gray-100">
-                        {data.title}
-                      </h3>
-                      <p className="mt-1 text-lg font-medium text-gray-300">
-                        ${data.variants[0].price}
-                      </p>
-                    </a>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </section> */}
-        <section className="w-full flex flex-col items-center justify-center bg-neutral-800 h-fit py-8 pb-10 md:py-0 md:h-[35vh]">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl mb-4 font-thin">
-            Join our mail list
-          </h1>
-          <form className="w-full md:w-[auto]">
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <input
-                type="text"
-                placeholder="Email"
-                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
-              />
-              <input
-                type="text"
-                placeholder="First Name"
-                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="p-3 w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm focus:outline-none caret-white"
-              />
-              <button className="bg-[#e8eddf] w-10/12 sm:w-44 md:w-48 h-8 md:h-14 rounded-sm">
-                Sign Up
-              </button>
-            </div>
-          </form>
-          <p className="mt-4 text-gray-300 underline underline-offset-4">
-            Get all of the latest drops and promotions
-          </p>
+        <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
+        <section className="h-fit md:h-[15vh] my-20 mb-24 flex flex-col items-center justify-center">
+          <h1 className="text-xl md:text-3xl text-white">Shop our latest drops now</h1>
+          <button className="bg-rose-500 p-1 px-4 rounded-lg mt-3 text-white" onClick={() => router.push('/collections')}>Collections</button>
         </section>
-        {/* <section className="bg-transparent w-11/12 md:w-full mx-auto">
-          <div className="mx-auto py-8 px-4 sm:py-24 sm:px-6  lg:px-8">
-            <div className="flex flex-row justify-between items-baseline text-white">
-              <h1 className="text-gray-50 font-semibold mb-5 text-2xl sm:text-3xl lg:text-4xl">
-                Hoodies
-              </h1>
-              <h3 className="hover:-translate-x-3 cursor-pointer transition duration-300">
-                Shop All Hoodies
-                <FontAwesomeIcon icon={faArrowRightLong} className="ml-2 " />
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {products
-                .filter((product: { productType: string | string[] }) =>
-                  product.productType.includes("Hoodie")
-                )
-                .slice(0, 4)
-                .map((data: any, i: number) => (
-                  <div key={i}>
-                    <a href="#" className="group">
-                      <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                        <img
-                          src={data.images[0].src}
-                          alt=""
-                          className="w-full h-full object-center object-cover group-hover:opacity-75"
-                        ></img>
-                      </div>
-                      <h3 className="mt-4 text-sm text-gray-100">
-                        {data.title}
-                      </h3>
-                      <p className="mt-1 text-lg font-medium text-gray-300">
-                        ${data.variants[0].price}
-                      </p>
-                    </a>
-                  </div>
-                ))}
-            </div>
+        {/* <section className="w-11/12 md:w-full flex flex-col md:flex-row  bg-[#e8eddf] h-[20vh] mx-auto mb-10">
+          <div className="md:w-1/2 bg-neutral-800 ">
+test
+          </div>
+          <div className="md:w-1/2">
+test
           </div>
         </section> */}
-        {/* <section className="w-full h-[fit] py-5 bg-neutral-700">
-          <div className="w-full flex flex-row justify-between items-center px-20">
-            <h1 className="text-white text-5xl font-bold tracking-widest">
-              FALL SALE!
-            </h1>
-            <div className="flex flex-col  items-center">
-              <h1 className="text-white text-6xl font-bold">10% OFF</h1>
-              <h3 className="text-gray-300 text-xl">On purchases of over $60</h3>
-            </div>
-            <h1 className="text-white text-5xl font-bold tracking-widest">
-              FALL SALE!
-            </h1>
+        {/* <section className="w-full flex flex-row justify-center h-fit py-20 md:p mb-20">
+          <div className="w-full mx-auto md:w-full bg-[#e8eddf] flex flex-col justify-center items-center py-3">
+            <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
+            <h2 className="text-xl mt-2 underline underline-offset-4 hover:text-rose-500 cursor-pointer transition-all ">
+              Shop the Collection
+            </h2>
+            <button></button>
           </div>
         </section> */}
-        <section className="w-full h-[80vh]"></section>
       </main>
-      {/* </div> */}
     </>
   );
 };
