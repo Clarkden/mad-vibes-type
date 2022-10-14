@@ -116,7 +116,7 @@ const Navbar = (props: any) => {
           >
             Collections
           </p>
-          <p onClick={() => router.push('/contact')} className="hover:cursor-pointer hover:scale-105 transition trxt-rose-500">
+          <p onClick={() => router.push('/contact')} className="hover:cursor-pointer hover:scale-105 transition text-rose-500">
             Contact
           </p>
         </div>
