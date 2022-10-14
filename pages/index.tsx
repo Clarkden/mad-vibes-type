@@ -139,9 +139,9 @@ const Home = (props: productProps) => {
           
         </section>
         <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
-        <section className="h-fit md:h-[15vh] my-20 mb-24 flex flex-col items-center justify-center">
+        <section className="h-fit md:h-[15vh] my-20 mb-24 flex flex-col items-center justify-center w-fit mx-auto">
           <h1 className="text-xl md:text-3xl text-white">Shop our latest drops now</h1>
-          <button className="bg-rose-500 p-1 px-4 rounded-lg mt-3 text-white" onClick={() => router.push('/collections')}>Collections</button>
+          <button className="bg-rose-500 p-2 md:p-3 px-4 rounded-lg mt-3 text-white w-full text-base md:text-lg" onClick={() => router.push('/collections')}>Shop Collections</button>
         </section>
         {/* <section className="w-11/12 md:w-full flex flex-col md:flex-row  bg-[#e8eddf] h-[20vh] mx-auto mb-10">
           <div className="md:w-1/2 bg-neutral-800 ">
