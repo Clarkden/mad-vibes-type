@@ -52,17 +52,17 @@ const Navbar = (props: any) => {
           <ul className="flex flex-row gap-4 items-center ">
             <li
               onClick={() => router.push("/")}
-              className="hover:cursor-pointer hover:scale-105 transition"
+              className="hover:cursor-pointer hover:text-rose-500 transition"
             >
               Home
             </li>
             <li
               onClick={() => router.push("/collections")}
-              className="hover:cursor-pointer hover:scale-105 transition"
+              className="hover:cursor-pointer hover:text-rose-500 transition"
             >
               Collections
             </li>
-            <li className="hover:cursor-pointer hover:scale-105 transition">
+            <li onClick={() => router.push('contact')} className="hover:cursor-pointer hover:text-rose-500 transition">
               Contact
             </li>
             <div className="h-8 border-r-2 border-neutral-700"></div>
@@ -103,7 +103,7 @@ const Navbar = (props: any) => {
               setMobileOpacity("opacity-0 pointer-events-none");
               router.push("/");
             }}
-            className="hover:cursor-pointer hover:scale-105 transition"
+            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
           >
             Home
           </p>
@@ -112,11 +112,11 @@ const Navbar = (props: any) => {
               setMobileOpacity("opacity-0 pointer-events-none");
               router.push("/collections");
             }}
-            className="hover:cursor-pointer hover:scale-105 transition"
+            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
           >
             Collections
           </p>
-          <p className="hover:cursor-pointer hover:scale-105 transition">
+          <p onClick={() => router.push('/contact')} className="hover:cursor-pointer hover:scale-105 transition trxt-rose-500">
             Contact
           </p>
         </div>
