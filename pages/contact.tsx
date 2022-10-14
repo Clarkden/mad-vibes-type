@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Head from "next/head";
 import Navbar from "../components/navbar";
 

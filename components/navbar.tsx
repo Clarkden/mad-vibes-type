@@ -53,18 +53,21 @@ const Navbar = (props: any) => {
             <li
               onClick={() => router.push("/")}
               className="hover:cursor-pointer hover:text-rose-500 transition"
+              key={'Home'}
             >
               Home
             </li>
             <li
               onClick={() => router.push("/collections")}
               className="hover:cursor-pointer hover:text-rose-500 transition"
+              key={'Collections'}
             >
               Collections
             </li>
             <li
               onClick={() => router.push("contact")}
               className="hover:cursor-pointer hover:text-rose-500 transition"
+              key={'Contact'}
             >
               Contact
             </li>
@@ -88,7 +91,7 @@ const Navbar = (props: any) => {
           </div>
           <div className="flex flex-row items-center">
             <ShoppingBag products={props.products} />
-            <div className="w-4">
+            <div className="w-5">
               {mobileOpacity === "opacity-0 pointer-events-none" ? (
                 <FontAwesomeIcon
                   icon={faBars}
@@ -124,6 +127,7 @@ const Navbar = (props: any) => {
               router.push("/");
             }}
             className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            key={'Home1'}
           >
             Home
           </p>
@@ -133,12 +137,14 @@ const Navbar = (props: any) => {
               router.push("/collections");
             }}
             className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            key={'Collections1'}
           >
             Collections
           </p>
           <p
             onClick={() => router.push("/contact")}
             className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            key={'Contact1'}
           >
             Contact
           </p>

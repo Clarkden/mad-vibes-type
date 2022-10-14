@@ -115,13 +115,13 @@ const Collection = (props: any) => {
                   ></img>
                 </div>
                 {product?.images?.length > 1 ? (
-                  <div className="w-full h-fit md:h-[20vh] flex flex-row flex-nowrap overflow-hidden mt-3 gap-3">
+                  <div className="flex flex-row flex-nowrap overflow-hidden mt-3 gap-3 w-full h-fit md:h-[20vh]">
                     {product.images.slice(0, 3).map((data: any, i: number) => (
-                      <>
+                      <div className="w-1/4 h-[12vh] md:h-[20vh]" key={data.src}>
                         {presentedImage === data.src ? (
                           <div
                             key={i}
-                            className="w-1/4 h-[12vh] md:h-[20vh] overflow-hidden relative rounded-md cursor-pointer"
+                            className="min-w-full min-h-full overflow-hidden relative rounded-md cursor-pointer"
                             onClick={() => setPresentedImage(data.src)}
                           >
                             <img
@@ -132,7 +132,7 @@ const Collection = (props: any) => {
                         ) : (
                           <div
                             key={i}
-                            className="w-1/4 h-[12vh] md:h-[20vh] overflow-hidden relative rounded-md opacity-50 cursor-pointer"
+                            className="min-w-full min-h-full overflow-hidden relative rounded-md opacity-50 cursor-pointer"
                             onClick={() => setPresentedImage(data.src)} 
                           >
                             <img
@@ -141,7 +141,7 @@ const Collection = (props: any) => {
                             ></img>
                           </div>
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                 ) : null}
@@ -149,7 +149,6 @@ const Collection = (props: any) => {
               <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
                 <div className="flex flex-col">
                   <h1 className="text-lg md:text-2xl">{product.title}</h1>
-                  {/* <p className="text-gray-400 text-lg">{product.productType}</p> */}
                   <h2 className="text-base md:text-xl text-yellow-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
@@ -158,44 +157,44 @@ const Collection = (props: any) => {
                 <div>
                   <h1 className="text-base md:text-xl mt-10">Sizes</h1>
                   <div className="md:w-2/5 mb-5">
-                    <div className="flex flex-row flex-nowrap gap-5 mt-2 overflow-scroll md:overflow-visible">
+                    <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-visible">
                       {product.variants.map((data: any, i: number) => (
-                        <>
+                        <div className="w-fit md:w-full h-12 md:h-auto" key={i}>
                           {data.available ? (
-                            <div className="w-fit md:w-full h-12 md:h-auto">
+                              <>
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
-                                  className={`bg-white shadow-sm shadow-white h-10 min-w-[105px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                  className={`bg-white shadow-sm shadow-white h-10 min-w-[95px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                                 >
                                   {data.title}
                                 </button>
                               ) : (
                                 <button
                                   key={i}
-                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[105px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
+                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
                                   onClick={() => setSelectedVariant(data)}
                                 >
                                   {data.title}
                                 </button>
                               )}
-                            </div>
+                            {/* </div> */}
+                            </>
                           ) : (
                             <button
-                              key={i}
+                              key={data}
                               disabled
-                              className="border-2 border-gray-500 p-1 text-white text-sm h-10 min-w-[105px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px]"
+                              className="border-2 border-gray-500 p-1 text-white text-sm h-10 min-w-[95px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px] opacity-50"
                             >
                               {data.title}
                             </button>
                           )}
-                        </>
+                        </div>
                       ))}
                     </div>
                   </div>
                   {selectedVariant.available ? (
                     <button
-                      key={1}
                       className="bg-[#e8eddf] w-full h-10 md:h-12 md:p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
                       onClick={() => {
                         console.log(selectedVariant.title);
@@ -207,7 +206,6 @@ const Collection = (props: any) => {
                     </button>
                   ) : (
                     <button
-                      key={1}
                       className="bg-[#e8eddf]/75 w-full h-10 md:h-12 p-2 text-black rounded-md mb-2 mt-2"
                       disabled
                     >
