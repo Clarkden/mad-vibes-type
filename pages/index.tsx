@@ -111,7 +111,7 @@ const Home = (props: productProps) => {
           </div>
         </section>
         <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
-        <section className="h-fit md:h-[80vh] md:w-[95%] mx-auto py-20 md:px-5 flex flex-col md:flex-row gap-8">
+        <section className="h-fit w-full md:h-[80vh] md:w-[95%] mx-auto py-20 md:px-5 flex flex-col md:flex-row gap-8">
           <div className="w-11/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
             <img
               src="IMG_8029.jpg"
