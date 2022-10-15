@@ -127,7 +127,7 @@ const Contact = (props: any) => {
                   />
                 </div>
                 <button className="w-full mt-6 p-2 text-black rounded-lg bg-[#e8eddf] hover:text-white hover:bg-rose-500 transition">
-                  Contact <FontAwesomeIcon icon={faPaperPlane} />{" "}
+                  Send <FontAwesomeIcon icon={faPaperPlane} />{" "}
                 </button>
               </form>
             </>
