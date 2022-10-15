@@ -118,7 +118,7 @@ const Navbar = (props: any) => {
               setMobileOpacity("opacity-0 pointer-events-none");
               router.push("/");
             }}
-            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            className="hover:cursor-pointer hover:scale-105 transition hover:text-rose-500 text-lg"
             key={'Home1'}
           >
             Home
@@ -128,14 +128,14 @@ const Navbar = (props: any) => {
               setMobileOpacity("opacity-0 pointer-events-none");
               router.push("/collections");
             }}
-            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            className="hover:cursor-pointer hover:scale-105 transition hover:text-rose-500 text-lg"
             key={'Collections1'}
           >
             Collections
           </p>
           <p
             onClick={() => router.push("/contact")}
-            className="hover:cursor-pointer hover:scale-105 transition text-rose-500"
+            className="hover:cursor-pointer hover:scale-105 transition hover:text-rose-500 text-lg"
             key={'Contact1'}
           >
             Contact

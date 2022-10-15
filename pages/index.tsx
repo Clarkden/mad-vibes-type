@@ -143,23 +143,6 @@ const Home = (props: productProps) => {
           <h1 className="text-xl md:text-3xl text-white">Shop our latest drops now</h1>
           <button className="bg-rose-500 p-2 md:p-3 px-4 rounded-lg mt-3 text-white w-full text-base md:text-lg" onClick={() => router.push('/collections')}>Shop Collections</button>
         </section>
-        {/* <section className="w-11/12 md:w-full flex flex-col md:flex-row  bg-[#e8eddf] h-[20vh] mx-auto mb-10">
-          <div className="md:w-1/2 bg-neutral-800 ">
-test
-          </div>
-          <div className="md:w-1/2">
-test
-          </div>
-        </section> */}
-        {/* <section className="w-full flex flex-row justify-center h-fit py-20 md:p mb-20">
-          <div className="w-full mx-auto md:w-full bg-[#e8eddf] flex flex-col justify-center items-center py-3">
-            <img src="/mad_vibes_logo.png" className="h-12 w-[auto]"></img>
-            <h2 className="text-xl mt-2 underline underline-offset-4 hover:text-rose-500 cursor-pointer transition-all ">
-              Shop the Collection
-            </h2>
-            <button></button>
-          </div>
-        </section> */}
       </main>
     </>
   );
