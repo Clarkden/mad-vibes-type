@@ -120,7 +120,7 @@ const Home = (props: productProps) => {
           </div>
           <div className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
             <img
-              src="IMG_4595.jpg"
+              src="IMG_1000.png"
               className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
             ></img>
           </div>
