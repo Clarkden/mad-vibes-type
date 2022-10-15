@@ -4,7 +4,7 @@ import { faCheck, faCheckCircle, faPaperPlane, faShare } from "@fortawesome/free
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Navbar from "../components/navbar";
 import { parseShopifyResponse, shopifyClient } from "../functions/functions";
 import nodemailer from "nodemailer";
@@ -34,7 +34,10 @@ const Contact = (props: any) => {
           message: message,
         }),
       }).then((response) => {
-        response.status === 200 ? () => {setSubmitted(true); setSubmissionError(false)}: null;
+        if(response.ok){
+          setSubmitted(true); 
+          setSubmissionError(false);
+        }
       });
     }
   };
@@ -60,7 +63,7 @@ const Contact = (props: any) => {
       <main className="min-h-[90vh] flex flex-row justify-center items-center">
         <div className="w-10/12 mx-autop md:w-1/3 bg-neutral-800 rounded-lg h-fit flex flex-col items-start p-5">
           <h1 className="text-lg md:text-2xl text-white">Contact</h1>
-          {submitted ? (
+          {!submitted ? (
             <>
               <p className="text-green-300 text-sm md:text-lg">
                 Need some help? Drop us a message!
