@@ -40,7 +40,7 @@ const Contact = (props: any) => {
         }
       });
     }
-  };
+  };  
 
   return (
     <>
