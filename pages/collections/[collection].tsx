@@ -82,7 +82,7 @@ const Collection = (props: any) => {
     let checkout = parseShopifyResponse(await localClient.checkout.create());
     checkout = parseShopifyResponse(
       await localClient.checkout.addLineItems(checkout.id, [
-        { variantId: id, quantity: 1 },
+        { variantId: selectedVariant.id, quantity: 1 },
       ])
     );
     router.push(checkout.webUrl);
