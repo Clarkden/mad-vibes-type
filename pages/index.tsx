@@ -44,7 +44,7 @@ const Home = (props: productProps) => {
         <link href="https://dl.dafont.com/dl/?f=chomsky" rel="stylesheet" />
       </Head>
       <Navbar products={props.products} />
-      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_1000.png")] bg-fixed bg-left bg-no-repeat bg-cover md:bg-center relative'>
+      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_1000.png")] bg-fixed bg-left md:bg-no-repeat md:bg-cover md:bg-center relative'>
         <div className="w-1/3 h-full hidden md:block"></div>
         <div className="md:w-1/3 h-full md:border-x-2 md:border-white/50 flex flex-col justify-center items-center">
           <div className="bg-[#e8eddf] w-4/5 p-3">
