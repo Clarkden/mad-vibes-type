@@ -14,20 +14,22 @@ interface productProps {
 }
 
 const Collection = (props: productProps) => {
-  const [products, setProducts] = useState<any>(props.products);
-  const [preservedProductsList, setPreservedProductsList] =
-    useState<any>(products);
 
   const router = useRouter();
   const { shop } = router.query;
-
-  ///////
+  
+  const [products, setProducts] = useState<any>(shop === 'new' ? props.products.sort(
+    (a, b) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  ) : props.products);
+  const [preservedProductsList, setPreservedProductsList] =
+    useState<any>(products);
 
   const [men, setMen] = useState<boolean>(false);
 
   const [sortByPriceLow, setSortByPriceLow] = useState<boolean>(false);
   const [sortByPriceHigh, setSortByPriceHigh] = useState<boolean>(false);
-  const [sortByNewest, setSortByNewest] = useState<boolean>(true);
+  const [sortByNewest, setSortByNewest] = useState<boolean>(shop === 'new' ? true : false);
 
   useEffect(() => {
     if (men) {

@@ -44,15 +44,13 @@ const Home = (props: productProps) => {
         <link href="https://dl.dafont.com/dl/?f=chomsky" rel="stylesheet" />
       </Head>
       <Navbar products={props.products} />
-      {/* <div className=' bg-fixed bg-center bg-no-repeat md:bg-repeat bg-contain'> */}
-
-      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_7920.jpg")] bg-fixed bg-top md:bg-center relative'>
+      <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_1000.png")] bg-fixed bg-left bg-no-repeat bg-cover md:bg-center relative'>
         <div className="w-1/3 h-full hidden md:block"></div>
         <div className="md:w-1/3 h-full md:border-x-2 md:border-white/50 flex flex-col justify-center items-center">
           <div className="bg-[#e8eddf] w-4/5 p-3">
             <img src="/mad_vibes_logo.png"></img>
-            <a href="#main">
-              <h3 className="hover:underline">Shop mad vibes</h3>
+            <a href="/collections">
+              <h3 className="text-center uppercase border-2 border-black mt-5 rounded-md bg-black text-white hover:scale-[101%] transition">Shop mad vibes</h3>
             </a>
           </div>
         </div>
@@ -87,8 +85,8 @@ const Home = (props: productProps) => {
               Shop our scariest drop yet!
             </p>
             <button
-              className="bg-orange-400 shadow-md shadow-orange-400 p-2 mt-3 black font-bold hover:scale-105 transition rounded-lg w-fit self-center"
-              onClick={() => router.push("collections")}
+              className="bg-orange-400 shadow-lg shadow-orange-400 hover:text-white p-2 mt-3 black font-bold transition rounded-lg w-fit self-center"
+              onClick={() => router.push("/collections?shop=new")}
             >
               Shop Collections
             </button>
@@ -112,25 +110,25 @@ const Home = (props: productProps) => {
         </section>
         <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
         <section className="h-fit w-full md:h-[80vh] md:w-[95%] mx-auto py-20 md:px-5 flex flex-col md:flex-row gap-8">
-          <div className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+          <div onClick={() => router.push('/collections/beige-on-white-puff-vibe-tee')} className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition cursor-pointer">
             <img
               src="IMG_8029.jpg"
               className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
             ></img>
           </div>
-          <div className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+          <div onClick={() => router.push('/collections/mad-vibes-trucker-hat-camo')} className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition cursor-pointer">
             <img
               src="IMG_1000.png"
               className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
             ></img>
           </div>
-          <div className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+          <div onClick={() => router.push('/collections/blackout-puff-vibe-tee')} className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition cursor-pointer">
             <img
               src="IMG_8088.jpg"
               className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
             ></img>
           </div>
-          <div className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition">
+          <div onClick={() => router.push('/collections/blackout-puff-vibe-tee')} cursor-pointer className="w-10/12 mx-auto h-[50vh] md:h-full md:w-1/4 overflow-hidden relative shadow-white shadow-md border-2 border-white hover:shadow-lg hover:shadow-white transition cursor-pointer">
             <img
               src="IMG_7920.jpg"
               className="absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto min-h-full min-w-full rounded-sm"
@@ -141,7 +139,7 @@ const Home = (props: productProps) => {
         <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>
         <section className="h-fit md:h-[15vh] my-20 mb-24 flex flex-col items-center justify-center w-fit mx-auto">
           <h1 className="text-xl md:text-3xl text-white">Shop our latest drops now</h1>
-          <button className="bg-rose-500 p-2 md:p-3 px-4 rounded-lg mt-3 text-white w-full text-base md:text-lg" onClick={() => router.push('/collections')}>Shop Collections</button>
+          <button className="bg-rose-500 p-2 md:p-3 px-4 rounded-lg mt-3 text-white w-full text-base md:text-lg hover:scale-105 ease-in-out transition" onClick={() => router.push('/collections')}>Shop Collections</button>
         </section>
       </main>
     </>

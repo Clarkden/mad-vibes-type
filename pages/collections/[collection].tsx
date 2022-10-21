@@ -108,7 +108,7 @@ const Collection = (props: any) => {
             </div>
             <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-10">
               <div className="md:w-1/2 md:min-w-[50%] flex flex-col">
-                <div className="h-[30vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
+                <div className="h-[40vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img
                     src={presentedImage}
                     className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
