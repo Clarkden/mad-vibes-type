@@ -15,6 +15,7 @@ const Navbar = (props: any) => {
   const [mobileOpacity, setMobileOpacity] = useState(
     "opacity-0 pointer-events-none"
   );
+  const [promotion, setPromotion] = useState<string>('flex')
 
   const handleScroll = () => {
     const position = window.pageYOffset;

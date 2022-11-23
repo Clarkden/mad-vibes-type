@@ -47,7 +47,7 @@ const Home = (props: productProps) => {
       <section className='w-full h-[70vh] md:h-[80vh] flex flex-row mx-auto justify-center bg-[url("../public/IMG_1000.png")] bg-fixed bg-left md:bg-no-repeat md:bg-cover md:bg-center relative'>
         <div className="w-1/3 h-full hidden md:block"></div>
         <div className="md:w-1/3 h-full md:border-x-2 md:border-white/50 flex flex-col justify-center items-center">
-          <div className="bg-[#e8eddf] w-4/5 p-3">
+          <div className="bg-[#e8eddf] w-4/5 p-3 rounded-[3px]">
             <img loading="lazy" src="/mad_vibes_logo.png"></img>
             <a href="/collections">
               <h3 className="text-center uppercase border-2 border-black mt-5 rounded-md bg-black text-white hover:scale-[101%] transition">
@@ -58,60 +58,37 @@ const Home = (props: productProps) => {
         </div>
         <div className="w-1/3 h-full hidden md:block"></div>
       </section>
-      <Parallax speed={100} className="z-50 absolute">
-        <img
-          loading="lazy"
-          src="flying-bats.png"
-          className="w-auto h-[40vh] md:h-[60vh] top-0 left-20"
-        />
-      </Parallax>
+
       <main
         id="main"
         className="w-full flex flex-col mx-auto  relative justify-between bg-neutral-900 "
       >
-        <section className="h-fit flex flex-col-reverse md:flex-row relative overflow-hidden py-10 md:py-20 px-4 md:px-10">
-          {/* <div className="w-full md:w-1/2 flex flex-row flex-wrap mt-8 md:mt-0"> */}
-          <div className="w-full md:w-1/4 p-4">
-            <img
-              loading="lazy"
-              src="/FullSizeRender.JPG"
-              className="rounded-sm shadow-md shadow-orange-400 border-2 border-orange-400 saturate-150"
-            ></img>
-          </div>
+        <section className="h-fit flex flex-col-reverse md:flex-row overflow-hidden py-10 md:py-20 px-4 md:px-10 relative">
+          <img
+            className="max-h-[150px] max-w-[150px] z-10 md:max-h-[300px] md:max-w-[300px] absolute md:z-40 top-2 right-2  md:top-1/2 md:-translate-y-1/2 md:right-1/4 md:translate-x-3/4"
+            src="/redSnowFlake.png"
+          ></img>
+          <img
+            className="max-h-[150px] max-w-[150px] z-10 md:max-h-[300px] md:max-w-[300px] absolute md:z-40 bottom-1/4 translate-y-2/4 left-2 md:top-1/2 md:-translate-y-1/2 md:left-1/4 md:-translate-x-3/4"
+            src="/redSnowFlake.png"
+          ></img>
 
-          {/* </div> */}
-
-          <div className="w-full md:w-11/12 flex flex-col justify-center md:items-center relative my-24 md:my-0">
-            <h1 className="text-4xl md:text-6xl font-chomsky text-orange-400 font-semibold text-center">
-              ITS SPOOKY SEASON
-            </h1>
-            <p className=" text-2xl md:text-3xl text-white font-chomsky text-center mt-5">
-              Shop our scariest drop yet!
-            </p>
-            <button
-              className="bg-orange-400 shadow-lg shadow-orange-400 hover:text-white p-2 mt-3 black font-bold transition rounded-lg w-fit self-center"
-              onClick={() => router.push("/collections?shop=new")}
-            >
-              Shop Collections
-            </button>
-            <img
-              loading="lazy"
-              src="pumpkin1.png"
-              className="absolute w-14 h-14  left-6 -bottom-3 md:w-20 md:h-20 md:bottom-4 md:left-20 z-30"
-            />
-            <img
-              src="pumpkin2.png"
-              className="absolute w-14 h-14 right-6 -bottom-3 md:w-20 md:h-20 md:bottom-4 md:right-20 z-30"
-            />
-            {/* <img src="candel.png" className="absolute w-14 h-14 right-0  md:w-auto md:h-20 md:bottom-4 md:left-1/2 md:-translate-x-[90%] "/> */}
-            {/* <img src="candel.png" className="absolute w-14 h-14 right-0  md:w-auto md:h-20 md:bottom-4 md:left-1/2 md:-translate-x-[10%] "/> */}
-          </div>
-          <div className="w-full md:w-1/4 p-4">
-            <img
-              loading="lazy"
-              src="/IMG_4599.JPG"
-              className="rounded-sm shadow-md shadow-orange-400 border-2 border-orange-400 saturate-150"
-            ></img>
+          <div className="w-11/2 md:w-full flex flex-col justify-center items-center relative my-24 md:my-0 z-40">
+            <div className="flex flex-col w-fit h-full">
+              <h1 className="text-5xl md:text-7xl text-[white] font-thin text-center tracking-wide">
+                BLACK<br></br>
+                <span className="font-bold tracking-widest">FRIDAY</span>
+              </h1>
+              <p className=" text-lg sm:text-xl md:text-2xl text-center mt-5 text-gray-400">
+                Just in time for the holidays!
+              </p>
+              <button
+                className="bg-white shadow-sm shadow-white hover:scale-105 p-1 md:p-2 mt-10 black font-bold transition rounded-lg w-full self-center text-black"
+                onClick={() => router.push("/collections?shop=new")}
+              >
+                Shop Collections
+              </button>
+            </div>
           </div>
         </section>
         <div className="border-2 border-neutral-800 w-11/12 mx-auto rounded-lg"></div>

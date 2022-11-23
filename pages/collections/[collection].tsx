@@ -44,31 +44,35 @@ interface product {
 
 const Collection = (props: any) => {
   const router = useRouter();
-  const [product, setProduct] = useState<product>();
+  const [product, setProduct] = useState<product | undefined>(undefined);
   const { products, handle } = props;
   const [selectedVariant, setSelectedVariant] = useState<any>();
   const [presentedImage, setPresentedImage] = useState<any>();
 
   useEffect(() => {
     let localProduct: any = {};
-    for (let x = 0; x < products.length; x++) {
-      if (products[x].handle === handle) {
-        localProduct = products[x];
-        break;
-      }
-    }
-    setProduct(localProduct);
-
-    if (localProduct.variants.length - 1 > 0) {
-      for (let x = localProduct.variants.length - 1; x > -1; x--) {
-        if (!selectedVariant && localProduct.variants[x].available) {
-          setSelectedVariant(localProduct!.variants[x]);
-          setPresentedImage(localProduct.images[0].src);
+    try {
+      for (let x = 0; x < products.length; x++) {
+        if (products[x].handle === handle) {
+          localProduct = products[x];
+          break;
         }
       }
-    } else {
-      setSelectedVariant(localProduct!.variants[0]);
-      setPresentedImage(localProduct.images[0].src);
+      setProduct(localProduct);
+
+      if (localProduct.variants.length - 1 > 0) {
+        for (let x = localProduct.variants.length - 1; x > -1; x--) {
+          if (!selectedVariant && localProduct.variants[x].available) {
+            setSelectedVariant(localProduct!.variants[x]);
+            setPresentedImage(localProduct.images[0].src);
+          }
+        }
+      } else {
+        setSelectedVariant(localProduct!.variants[0]);
+        setPresentedImage(localProduct.images[0].src);
+      }
+    } catch (err) {
+      setProduct(undefined)
     }
   }, [products, handle]);
 
@@ -101,7 +105,7 @@ const Collection = (props: any) => {
               />
               <p
                 className=" font-semibold text-lg w-fit inline "
-                onClick={() => router.push("/collections")}
+                onClick={() => router.back()}
               >
                 Back
               </p>
@@ -114,10 +118,13 @@ const Collection = (props: any) => {
                     className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
                   ></img>
                 </div>
-                {product?.images?.length > 1 ? (
+                {product!.images?.length > 1 ? (
                   <div className="flex flex-row flex-nowrap overflow-hidden mt-3 gap-3 w-full h-fit md:h-[20vh]">
-                    {product.images.slice(0, 3).map((data: any, i: number) => (
-                      <div className="w-1/4 h-[12vh] md:h-[20vh]" key={data.src}>
+                    {product!.images.slice(0, 3).map((data: any, i: number) => (
+                      <div
+                        className="w-1/4 h-[12vh] md:h-[20vh]"
+                        key={data.src}
+                      >
                         {presentedImage === data.src ? (
                           <div
                             key={i}
@@ -133,7 +140,7 @@ const Collection = (props: any) => {
                           <div
                             key={i}
                             className="min-w-full min-h-full overflow-hidden relative rounded-md opacity-50 cursor-pointer"
-                            onClick={() => setPresentedImage(data.src)} 
+                            onClick={() => setPresentedImage(data.src)}
                           >
                             <img
                               src={data.src}
@@ -148,7 +155,7 @@ const Collection = (props: any) => {
               </div>
               <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
                 <div className="flex flex-col">
-                  <h1 className="text-lg md:text-2xl">{product.title}</h1>
+                  <h1 className="text-lg md:text-2xl">{product!.title}</h1>
                   <h2 className="text-base md:text-xl text-yellow-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
@@ -158,10 +165,10 @@ const Collection = (props: any) => {
                   <h1 className="text-base md:text-xl mt-10">Sizes</h1>
                   <div className="md:w-2/5 mb-5">
                     <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-visible">
-                      {product.variants.map((data: any, i: number) => (
+                      {product!.variants.map((data: any, i: number) => (
                         <div className="w-fit md:w-full h-12 md:h-auto" key={i}>
                           {data.available ? (
-                              <>
+                            <>
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
@@ -178,7 +185,7 @@ const Collection = (props: any) => {
                                   {data.title}
                                 </button>
                               )}
-                            {/* </div> */}
+                              {/* </div> */}
                             </>
                           ) : (
                             <button
@@ -198,7 +205,7 @@ const Collection = (props: any) => {
                       className="bg-[#e8eddf] w-full h-10 md:h-12 md:p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
                       onClick={() => {
                         console.log(selectedVariant.title);
-                        AddToCart(product.id, selectedVariant.title);
+                        AddToCart(product!.id, selectedVariant.title);
                         window.location.reload();
                       }}
                     >
@@ -216,7 +223,7 @@ const Collection = (props: any) => {
                     <button
                       key={2}
                       className="bg-[#e8eddf] w-full h-10 md:h-12 p-2 text-black rounded-md"
-                      onClick={() => InstantCheckout(product.variants[0].id)}
+                      onClick={() => InstantCheckout(product!.variants[0].id)}
                     >
                       Buy
                     </button>
@@ -241,18 +248,18 @@ const Collection = (props: any) => {
       <>
         <Navbar products={products} />
         <div className="min-h-screen flex flex-col">
-          <section className="w-full h-full flex flex-col mt-48 items-center justiy-center text-white">
-            <div className="flex flex-col items-center">
-              <h1 className="text-4xl font-bold">Uh Oh!</h1>
-              <h2 className="text-2xl">
-                We were not able to find what you were looking for!
+          <section className="w-11/12 md:w-1/2 mx-auto h-full flex flex-col mt-48 items-center justiy-center text-white">
+            <div className="flex flex-col items-center bg-[#e8eddf] rounded-[10px] p-5 text-black text-center">
+              <h1 className="text-2xl font-medium">We ran into an issue</h1>
+              <h2 className="text-xl leading-tight tracking-tight font-light mt-2 mb-6">
+                We weren't able to find the product you were looking for
               </h2>
-              <p
-                className="text-red-400 hover:text-red-200 cursor-pointer w-fit mt-4 underline underline-offset-2"
+              <button
+                className="bg-red-400 text-black p-2 rounded-[10px] w-full"
                 onClick={() => router.push("/collections")}
               >
                 Back to collections
-              </p>
+              </button>
             </div>
           </section>
         </div>
