@@ -118,12 +118,12 @@ const Collection = (props: any) => {
                 </div>
                 
               </div>
-              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit w-full md:w-[500px] md:mt-11">
+              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 pt-8 h-fit w-full md:w-[500px] md:mt-11">
               {product!.images?.length > 1 ? (
-                  <div className="flex flex-row flex-nowrap overflow-scroll mt-3 gap-3 w-full h-fit md:h-[20vh] mb-10">
+                  <div className="flex flex-row flex-nowrap overflow-scroll gap-3 w-full h-fit md:h-[20vh] mb-10">
                     {product!.images.map((data: any, i: number) => (
                       <div
-                        className="min-w-[40%] w-[40%] h-[12vh] md:h-[20vh]"
+                        className="min-w-[40%] w-[50%] md:w-[40%] h-[12vh] md:h-[20vh]"
                         key={data.src}
                       >
                         {presentedImage === data.src ? (
@@ -134,7 +134,7 @@ const Collection = (props: any) => {
                           >
                             <img
                               src={data.src}
-                              className="min-h-full w-auto md:h-auto md:min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                              className="min-h-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
                             ></img>
                           </div>
                         ) : (
