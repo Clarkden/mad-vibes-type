@@ -14,14 +14,17 @@ interface productProps {
 }
 
 const Collection = (props: productProps) => {
-
   const router = useRouter();
   const { shop } = router.query;
-  
-  const [products, setProducts] = useState<any>(shop === 'new' ? props.products.sort(
-    (a, b) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  ) : props.products);
+
+  const [products, setProducts] = useState<any>(
+    shop === "new"
+      ? props.products.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+      : props.products
+  );
   const [preservedProductsList, setPreservedProductsList] =
     useState<any>(products);
 
@@ -29,7 +32,9 @@ const Collection = (props: productProps) => {
 
   const [sortByPriceLow, setSortByPriceLow] = useState<boolean>(false);
   const [sortByPriceHigh, setSortByPriceHigh] = useState<boolean>(false);
-  const [sortByNewest, setSortByNewest] = useState<boolean>(shop === 'new' ? true : false);
+  const [sortByNewest, setSortByNewest] = useState<boolean>(
+    shop === "new" ? true : false
+  );
 
   useEffect(() => {
     if (men) {
@@ -76,12 +81,14 @@ const Collection = (props: productProps) => {
   const [hats, setHats] = useState<boolean>(false);
   const [hoodies, setHoodies] = useState<boolean>(false);
   const [shirts, setShirts] = useState<boolean>(false);
+  const [sweats, setSweats] = useState<boolean>(false);
 
   useEffect(() => {
     if (all) {
       setHats(false);
       setHoodies(false);
       setShirts(false);
+      setSweats(false);
       setProducts(preservedProductsList);
     }
   }, [all]);
@@ -91,6 +98,7 @@ const Collection = (props: productProps) => {
       setAll(false);
       setHoodies(false);
       setShirts(false);
+      setSweats(false);
 
       let copy: any = preservedProductsList;
       setProducts(
@@ -107,6 +115,7 @@ const Collection = (props: productProps) => {
       setAll(false);
       setHats(false);
       setShirts(false);
+      setSweats(false);
 
       let copy: any = preservedProductsList;
       setProducts(
@@ -123,6 +132,7 @@ const Collection = (props: productProps) => {
       setAll(false);
       setHats(false);
       setHoodies(false);
+      setSweats(false);
 
       let copy: any = preservedProductsList;
       setProducts(
@@ -133,6 +143,23 @@ const Collection = (props: productProps) => {
       setPreservedProductsList(copy);
     }
   }, [shirts]);
+
+  useEffect(() => {
+    if (sweats) {
+      setAll(false);
+      setHats(false);
+      setHoodies(false);
+      setShirts(false);
+
+      let copy: any = preservedProductsList;
+      setProducts(
+        preservedProductsList.filter((product: any) =>
+          product.productType.includes("Sweats")
+        )
+      );
+      setPreservedProductsList(copy);
+    }
+  }, [sweats]);
 
   useEffect(() => {
     switch (shop) {
@@ -154,6 +181,9 @@ const Collection = (props: productProps) => {
       case "shirts":
         setShirts(true);
         break;
+      case "sweats":
+        setSweats(true);
+        break;
 
       default:
         break;
@@ -165,55 +195,28 @@ const Collection = (props: productProps) => {
 
   return (
     <>
-    <Head>
-      <title>Collections</title>
-      <meta charSet="UTF-8"/>
-      <meta name="description" content="Shop our collection and find your new favorite item. Keep it fresh with our latest drops."/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <meta name="keywords" content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"/>
-      <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
-    </Head>
-    <Navbar products={props.products}/>
+      <Head>
+        <title>Collections</title>
+        <meta charSet="UTF-8" />
+        <meta
+          name="description"
+          content="Shop our collection and find your new favorite item. Keep it fresh with our latest drops."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="mens clothes, womens clothes, designer, fashion, fashion style, men fashion, women fashion, new fashion, fashion trends"
+        />
+        <link rel="shortcut icon" href="/mad_vibes_logo_favicon.png" />
+      </Head>
+      <Navbar products={props.products} />
       <div className="min-h-max">
         <section className="md:p-14 flex flex-col md:flex-row relative w-full md:w-[95%] mx-auto md:gap-10 p-5 pb-20">
           <aside className="md:w-[20vw] h-[80vh] sticky top-14 hidden md:flex flex-col rounded-lg text-white">
-            {/* <div className="flex flex-col gap-3 border-b-2 pb-4 border-b-neutral-700 ">
-              <div className="flex flex-row gap-2">
-                {men ? (
-                  <div
-                    className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"
-                    onClick={() => setMen(false)}
-                  ></div>
-                ) : (
-                  <div
-                    className="w-6 h-6 bg-neutral-700 hover:bg-neutral-600 hover:cursor-pointer rounded-md"
-                    onClick={() => setMen(true)}
-                  ></div>
-                )}
-                <p className="">Men</p>
-              </div>
-              <div className="flex flex-row gap-2">
-                <div
-                  className="w-6 h-6 bg-neutral-700 rounded-md"
-                  onClick={() => {}}
-                ></div>
-                <p className="">Women</p>
-              </div>
-              <div className="flex flex-row gap-2">
-                <div
-                  className="w-6 h-6 bg-neutral-700 rounded-md"
-                  onClick={() => {}}
-                ></div>
-                <p className="">Unisex</p>
-              </div>
-            </div> */}
             <div className="flex flex-col gap-3 border-b-2 border-b-neutral-700 py-4">
               <div className="flex flex-row gap-2">
                 {sortByPriceLow ? (
-                  <div
-                    className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"
-                    // onClick={}
-                  ></div>
+                  <div className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"></div>
                 ) : (
                   <div
                     className="w-6 h-6 bg-neutral-700 hover:bg-neutral-600 hover:cursor-pointer rounded-md"
@@ -238,10 +241,7 @@ const Collection = (props: productProps) => {
               </div>
               <div className="flex flex-row gap-2">
                 {sortByNewest ? (
-                  <div
-                    className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"
-                    // onClick={}
-                  ></div>
+                  <div className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"></div>
                 ) : (
                   <div
                     className="w-6 h-6 bg-neutral-700 hover:bg-neutral-600 hover:cursor-pointer rounded-md"
@@ -309,6 +309,17 @@ const Collection = (props: productProps) => {
                   )}
                   <p className="">Shirts</p>
                 </div>
+                <div className="flex flex-row gap-2">
+                  {sweats ? (
+                    <div className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"></div>
+                  ) : (
+                    <div
+                      className="w-6 h-6 bg-neutral-700 hover:bg-neutral-600 hover:cursor-pointer rounded-md"
+                      onClick={() => setSweats(true)}
+                    ></div>
+                  )}
+                  <p className="">Sweats</p>
+                </div>
               </div>
             </div>
           </aside>
@@ -350,36 +361,6 @@ const Collection = (props: productProps) => {
             <div
               className={`${mobileSortingMenu} w-full mt-5 overflow-scroll tranisition-height duration-500`}
             >
-              {/* <div className="flex flex-row gap-3 border-b-2 pb-4 border-b-neutral-700 ">
-                <div className="flex flex-row gap-2">
-                  {men ? (
-                    <div
-                      className="w-6 h-6 bg-[#e8eddf] hover:bg-[#e8eddf]/75  hover:cursor-pointer rounded-md"
-                      onClick={() => setMen(false)}
-                    ></div>
-                  ) : (
-                    <div
-                      className="w-6 h-6 bg-neutral-700 hover:bg-neutral-600 hover:cursor-pointer rounded-md"
-                      onClick={() => setMen(true)}
-                    ></div>
-                  )}
-                  <p className="">Men</p>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <div
-                    className="w-6 h-6 bg-neutral-700 rounded-md"
-                    onClick={() => {}}
-                  ></div>
-                  <p className="">Women</p>
-                </div>
-                <div className="flex flex-row gap-2">
-                  <div
-                    className="w-6 h-6 bg-neutral-700 rounded-md"
-                    onClick={() => {}}
-                  ></div>
-                  <p className="">Unisex</p>
-                </div>
-              </div> */}
               <div className="flex flex-col gap-3 border-b-2 border-b-neutral-700 pb-4">
                 <div className="flex flex-row gap-2">
                   {sortByPriceLow ? (

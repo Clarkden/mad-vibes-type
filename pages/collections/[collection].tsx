@@ -58,7 +58,7 @@ const Collection = (props: any) => {
           break;
         }
       }
-      setProduct(localProduct);
+      setProduct(localProduct)
 
       if (localProduct.variants.length - 1 > 0) {
         for (let x = localProduct.variants.length - 1; x > -1; x--) {
@@ -118,9 +118,9 @@ const Collection = (props: any) => {
                 </div>
                 
               </div>
-              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 pt-8 h-fit w-full md:w-[500px] md:mt-11">
+              <div className="text-white flex flex-col rounded-md bg-neutral-800 p-5 h-fit w-full md:w-[500px] md:mt-11">
               {product!.images?.length > 1 ? (
-                  <div className="flex flex-row flex-nowrap overflow-scroll gap-3 w-full h-fit md:h-[20vh] mb-10">
+                  <div className="flex flex-row flex-nowrap overflow-scroll gap-3 w-full h-fit md:h-[20vh] mb-6">
                     {product!.images.map((data: any, i: number) => (
                       <div
                         className="min-w-[40%] w-[50%] md:w-[40%] h-[12vh] md:h-[20vh]"
@@ -155,13 +155,13 @@ const Collection = (props: any) => {
                 ) : null}
                 <div className="flex flex-col">
                   <h1 className="text-lg md:text-2xl">{product!.title}</h1>
-                  <h2 className="text-base md:text-xl text-yellow-200 mt-1">
+                  <h2 className="text-base md:text-xl text-green-200 mt-1">
                     ${selectedVariant.price}
                   </h2>
-                  <p>{selectedVariant.description}</p>
+                  <p className="text-gray-400 mb-6 mt-2">{product.description}</p>
                 </div>
                 <div>
-                  <h1 className="text-base md:text-xl mt-10">Sizes</h1>
+                  <h1 className="text-base md:text-xl">Sizes</h1>
                   <div className="w-full mb-5">
                     <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-scroll">
                       {product!.variants.map((data: any, i: number) => (
@@ -178,7 +178,7 @@ const Collection = (props: any) => {
                               ) : (
                                 <button
                                   key={i}
-                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition"
+                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition w-full"
                                   onClick={() => setSelectedVariant(data)}
                                 >
                                   {data.title}
