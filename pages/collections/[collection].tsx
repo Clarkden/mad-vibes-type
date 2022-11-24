@@ -72,7 +72,7 @@ const Collection = (props: any) => {
         setPresentedImage(localProduct.images[0].src);
       }
     } catch (err) {
-      setProduct(undefined)
+      setProduct(undefined);
     }
   }, [products, handle]);
 
@@ -98,25 +98,23 @@ const Collection = (props: any) => {
         <Navbar products={products} />
         <section className="w-full min-h-screen flex flex-col md:flex-row p-4 md:p-10">
           <div className="w-full md:w-11/12 mx-auto pb-20">
-            <div className="text-white md:mb-4 w-fit cursor-pointer hover:translate-x-1 transition duration-400">
-              <FontAwesomeIcon
-                icon={faArrowLeftLong}
-                className="mr-2 text-lg"
-              />
-              <p
-                className=" font-semibold text-lg w-fit inline "
-                onClick={() => router.back()}
-              >
-                Back
-              </p>
-            </div>
             <div className="flex flex-col justify-start md:flex-row h-full md:h-auto md:justify-around gap-10">
               <div className="md:w-1/2 md:min-w-[50%] flex flex-col">
-                <div className="h-[40vh] md:h-[60vh] min-w-[95%] rounded-md overflow-hidden relative mt-5 md:mt-0">
-                  <img
-                    src={presentedImage}
-                    className="h-auto min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
-                  ></img>
+                <div className="text-white md:mb-4 w-fit cursor-pointer hover:translate-x-1 transition duration-400">
+                  <FontAwesomeIcon
+                    icon={faArrowLeftLong}
+                    className="mr-2 text-lg"
+                  />
+                  <p
+                    className=" font-semibold text-lg w-fit inline "
+                    onClick={() => router.back()}
+                  >
+                    Back
+                  </p>
+                </div>
+                <div className="h-[auto] min-w-[100%] rounded-md overflow-hidden relative mt-5 md:mt-0">
+                  <img src={presentedImage} className="min-w-full h-auto"></img>
+                  
                 </div>
                 {product!.images?.length > 1 ? (
                   <div className="flex flex-row flex-nowrap overflow-hidden mt-3 gap-3 w-full h-fit md:h-[20vh]">
@@ -153,7 +151,7 @@ const Collection = (props: any) => {
                   </div>
                 ) : null}
               </div>
-              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit">
+              <div className="text-white flex flex-col rounded-2xl bg-neutral-800 p-6 py-14 pt-8 h-fit w-full md:w-[500px] md:mt-11">
                 <div className="flex flex-col">
                   <h1 className="text-lg md:text-2xl">{product!.title}</h1>
                   <h2 className="text-base md:text-xl text-yellow-200 mt-1">
