@@ -161,8 +161,8 @@ const Collection = (props: any) => {
                 </div>
                 <div>
                   <h1 className="text-base md:text-xl mt-10">Sizes</h1>
-                  <div className="md:w-2/5 mb-5">
-                    <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-visible">
+                  <div className="w-full mb-5">
+                    <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-scroll">
                       {product!.variants.map((data: any, i: number) => (
                         <div className="w-fit md:w-full h-12 md:h-auto" key={i}>
                           {data.available ? (
