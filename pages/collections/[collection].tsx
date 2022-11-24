@@ -145,7 +145,7 @@ const Collection = (props: any) => {
                           >
                             <img
                               src={data.src}
-                              className="min-h-full w-auto md:h-auto md:min-w-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
+                              className="min-h-full absolute top-[-9999px] bottom-[-9999px] left-[-9999px] right-[-9999px] m-auto rounded-lg"
                             ></img>
                           </div>
                         )}
