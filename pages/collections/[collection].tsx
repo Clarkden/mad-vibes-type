@@ -58,18 +58,16 @@ const Collection = (props: any) => {
           break;
         }
       }
-      setProduct(localProduct)
-
+      setProduct(localProduct);
+      setPresentedImage(localProduct.images[0].src);
       if (localProduct.variants.length - 1 > 0) {
         for (let x = localProduct.variants.length - 1; x > -1; x--) {
           if (!selectedVariant && localProduct.variants[x].available) {
             setSelectedVariant(localProduct!.variants[x]);
-            setPresentedImage(localProduct.images[0].src);
           }
         }
       } else {
         setSelectedVariant(localProduct!.variants[0]);
-        setPresentedImage(localProduct.images[0].src);
       }
     } catch (err) {
       setProduct(undefined);
@@ -114,12 +112,10 @@ const Collection = (props: any) => {
                 </div>
                 <div className="h-[auto] min-w-[100%] rounded-md overflow-hidden relative mt-5 md:mt-0">
                   <img src={presentedImage} className="min-w-full h-auto"></img>
-                  
                 </div>
-                
               </div>
               <div className="text-white flex flex-col rounded-md bg-neutral-800 p-5 h-fit w-full md:w-[500px] md:mt-11">
-              {product!.images?.length > 1 ? (
+                {product!.images?.length > 1 ? (
                   <div className="flex flex-row flex-nowrap overflow-scroll gap-3 w-full h-fit md:h-[20vh] mb-6">
                     {product!.images.map((data: any, i: number) => (
                       <div
@@ -156,12 +152,20 @@ const Collection = (props: any) => {
                 <div className="flex flex-col">
                   <h1 className="text-lg md:text-2xl">{product!.title}</h1>
                   <h2 className="text-base md:text-xl text-green-200 mt-1">
-                    ${selectedVariant.price}
+                    <>
+                      {selectedVariant?.price ? (
+                        <>${selectedVariant.price}</>
+                      ) : (
+                        <> Out of stock!</>
+                      )}
+                    </>
                   </h2>
-                  <p className="text-gray-400 mb-6 mt-2">{product.description}</p>
+                  <p className="text-gray-400 mb-6 mt-2">
+                    {product.description}
+                  </p>
                 </div>
                 <div>
-                  <h1 className="text-base md:text-xl">Sizes</h1>
+                  {/* <h1 className="text-base md:text-xl">Sizes</h1> */}
                   <div className="w-full mb-5">
                     <div className="flex flex-row flex-nowrap gap-2 md:gap-5 mt-2 overflow-scroll md:overflow-scroll">
                       {product!.variants.map((data: any, i: number) => (
@@ -171,14 +175,14 @@ const Collection = (props: any) => {
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
-                                  className={`bg-white shadow-sm shadow-white h-10 min-w-[95px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                  className={`bg-white shadow-sm shadow-white  min-w-[95px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                                 >
                                   {data.title}
                                 </button>
                               ) : (
                                 <button
                                   key={i}
-                                  className="bg-neutral-400 p-1 text-black h-10 min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition w-full"
+                                  className="bg-neutral-500 p-1 text-black min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition w-full"
                                   onClick={() => setSelectedVariant(data)}
                                 >
                                   {data.title}
@@ -190,7 +194,7 @@ const Collection = (props: any) => {
                             <button
                               key={data}
                               disabled
-                              className="border-2 border-gray-500 p-1 text-white text-sm h-10 min-w-[95px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px] opacity-50"
+                              className="border-2 border-gray-500 p-1 text-white text-sm  min-w-[95px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px] opacity-50"
                             >
                               {data.title}
                             </button>
@@ -199,7 +203,7 @@ const Collection = (props: any) => {
                       ))}
                     </div>
                   </div>
-                  {selectedVariant.available ? (
+                  {selectedVariant?.available ? (
                     <button
                       className="bg-[#e8eddf] w-full h-10 md:h-12 md:p-2 text-black rounded-md mb-2 mt-2 md:mt-0"
                       onClick={() => {
@@ -218,7 +222,7 @@ const Collection = (props: any) => {
                       Add to Cart
                     </button>
                   )}
-                  {selectedVariant.available ? (
+                  {selectedVariant?.available ? (
                     <button
                       key={2}
                       className="bg-[#e8eddf] w-full h-10 md:h-12 p-2 text-black rounded-md"

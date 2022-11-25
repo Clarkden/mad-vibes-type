@@ -57,7 +57,9 @@ const Checkout = (props: any) => {
         (variant: any) => variant.title === renderedItems[i].variant
       );
 
-      localCartTotal += parseInt(renderedItems[i].item.variants[index].price) * renderedItems[i].quantity;
+      localCartTotal +=
+        parseInt(renderedItems[i].item.variants[index].price) *
+        renderedItems[i].quantity;
     }
     setCartTotal(localCartTotal);
   }, [renderedItems, updateItems]);
@@ -132,7 +134,7 @@ const Checkout = (props: any) => {
         </Head>
         <Navbar products={props.products} />
         <section className="w-full min-h-screen flex flex-col mt-20 md:mt-0 md:justify-center md:flex-row p-4 md:p-10 md:px-20 md:gap-10 mb-8">
-          <section className="w-full md:w-1/2 h-fit md:h-[80vh] bg-[#e8eddf] rounded-md p-5 mx-auto flex flex-col justify-between items-center">
+          <section className="w-full md:w-1/2 h-fit  bg-[#e8eddf] rounded-md p-5 mx-auto flex flex-col justify-start items-center">
             <div className="w-full h-auto overflow-scroll">
               <h1 className="mb-4 text-2xl">Shopping Cart</h1>
               {renderedItems?.map((data: any, i: number) => (
@@ -184,40 +186,45 @@ const Checkout = (props: any) => {
                 </div>
               ))}
               <div className="w-full">
-                <p className="text-base md:text-lg pt-4 pb-2">Cart Total: ${cartTotal.toPrecision(4)}</p>
+                <p className="text-base md:text-lg pt-4 pb-2">
+                  {renderedItems?.length > 0 ? (
+                    <>Cart Total: ${cartTotal.toPrecision(4)}</>
+                  ) : null}
+                </p>
               </div>
             </div>
-            {renderedItems < 1 ? (
-              <div className=" flex-col items-center justify-center text-center">
-                <h1 className="text-lg md:text-2xl">
-                  Uh oh!<br></br>Looks like your cart is empty!
-                </h1>
-                <p
-                  className="text-rose-500 cursor-pointer hover:text-rose-300 underline underline-offset-2"
+            {renderedItems?.length < 1 ? (
+              <div className="flex flex-col items-center bg-[#e8eddf] rounded-[10px]  text-black text-center w-full">
+                <h2 className="text-lg leading-tight tracking-tight font-light mt-2 mb-6">
+                  It looks like your cart is empty!
+                </h2>
+                <button
+                  className="bg-red-400 hover:drop-shadow-xl transition text-black p-2 rounded-[10px] w-full"
                   onClick={() => router.push("/collections")}
                 >
                   Back to collections
-                </p>
+                </button>
               </div>
             ) : null}
-
-            <div className="w-full flex md:flex-row flex-col gap-2">
-              <button
-                className="bg-rose-500 hover:drop-shadow-md transition text-white w-full p-2 rounded-lg"
-                onClick={() => {
-                  ClearCart();
-                  window.location.reload();
-                }}
-              >
-                Clear Cart
-              </button>
-              <button
-                className="bg-emerald-500 hover:drop-shadow-md transition w-full text-white p-2 rounded-lg"
-                onClick={() => Checkout()}
-              >
-                Checkout
-              </button>
-            </div>
+            {renderedItems?.length > 0 ? (
+              <div className="w-full flex md:flex-row flex-col gap-2">
+                <button
+                  className="bg-rose-500 hover:drop-shadow-xl transition text-white w-full p-2 rounded-lg"
+                  onClick={() => {
+                    ClearCart();
+                    window.location.reload();
+                  }}
+                >
+                  Clear Cart
+                </button>
+                <button
+                  className="bg-emerald-500 hover:drop-shadow-xl transition w-full text-white p-2 rounded-lg"
+                  onClick={() => Checkout()}
+                >
+                  Checkout
+                </button>
+              </div>
+            ) : null}
           </section>
         </section>
       </>

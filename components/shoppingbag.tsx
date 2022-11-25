@@ -31,6 +31,7 @@ const ShoppingBag = (props: any) => {
   useEffect(() => {
     let cartItems: any = [];
     if (products) {
+      try{
       for (let x = 0; x < items.length; x++) {
         const index = products.findIndex(
           (item: any) => item.id === items[x].id
@@ -38,6 +39,9 @@ const ShoppingBag = (props: any) => {
         cartItems.push({ item: products[index], quantity: items[x].quantity });
       }
       setRenderedItems(cartItems);
+    } catch(e) {
+      localStorage.clear()
+    }
     }
   }, [items, products]);
 
@@ -119,12 +123,7 @@ const ShoppingBag = (props: any) => {
               <h1 className="text-base">
                 Your cart is empty
               </h1>
-              <p
-                className="text-red-500 text-sm cursor-pointer hover:text-red-300 underline underline-offset-2"
-                onClick={() => router.push("/collections")}
-              >
-                Visit collections
-              </p>
+            
             </div>
           )}
         </div>
