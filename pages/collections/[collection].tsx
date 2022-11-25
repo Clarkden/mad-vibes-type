@@ -175,14 +175,14 @@ const Collection = (props: any) => {
                               {data.title === selectedVariant?.title! ? (
                                 <button
                                   key={i}
-                                  className={`bg-white shadow-sm shadow-white  min-w-[95px] md:p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
+                                  className={`bg-white shadow-sm shadow-white  min-w-[95px] p-1 text-black text-sm rounded-md md:w-full md:text-lg md:min-w-[120px] md:min-h-[35px]`}
                                 >
                                   {data.title}
                                 </button>
                               ) : (
                                 <button
                                   key={i}
-                                  className="bg-neutral-500 p-1 text-black min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition w-full"
+                                  className="bg-neutral-500 text-black min-w-[95px] text-sm rounded-md hover:bg-gray-50 md:text-lg md:min-w-[120px] md:min-h-[35px] transition w-full p-1"
                                   onClick={() => setSelectedVariant(data)}
                                 >
                                   {data.title}
@@ -194,7 +194,7 @@ const Collection = (props: any) => {
                             <button
                               key={data}
                               disabled
-                              className="border-2 border-gray-500 p-1 text-white text-sm  min-w-[95px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px] opacity-50"
+                              className="border-2 border-gray-500 text-white text-sm  min-w-[95px] rounded-md md:text-lg md:min-w-[120px] md:min-h-[35px] opacity-50 p-1"
                             >
                               {data.title}
                             </button>
