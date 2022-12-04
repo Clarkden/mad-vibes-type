@@ -20,12 +20,9 @@ interface productProps {
 }
 
 const Home = (props: productProps) => {
-  let products: any = props.products;
-
-  const [hoverTest, setHoverTest] = useState(false);
-
+  const products: any = props.products;
   const router = useRouter();
-
+  
   return (
     <>
       <Head>
@@ -76,8 +73,8 @@ const Home = (props: productProps) => {
           <div className="w-11/2 md:w-full flex flex-col justify-center items-center relative my-24 md:my-0 z-40">
             <div className="flex flex-col w-fit h-full">
               <h1 className="text-5xl md:text-7xl text-[white] font-thin text-center tracking-wide">
-                BLACK<br></br>
-                <span className="font-bold tracking-widest">FRIDAY</span>
+                HOLIDAY<br></br>
+                <span className="font-bold tracking-widest">SEASON</span>
               </h1>
               <p className=" text-lg sm:text-xl md:text-2xl text-center mt-5 text-gray-400">
                 Just in time for the holidays!

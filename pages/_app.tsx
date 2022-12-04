@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               className="text-red-400 mr-2 cursor-pointer"
               onClick={() => setPromotion("hidden")}
             />{" "}
-            It{"'"}s our Black Friday Sale!
+            It{"'"}s the holiday season! Look out for deals!
           </p>
         </div>
         <Component {...pageProps} />
